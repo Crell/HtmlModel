@@ -77,7 +77,7 @@ class HtmlPage implements Linkable
     /**
      * Returns the HTML attributes for the body element of this page.
      *
-     * @return \Drupal\Core\Template\Attribute
+     * @return array
      */
     public function getBodyAttributes() {
         return $this->bodyAttributes;
