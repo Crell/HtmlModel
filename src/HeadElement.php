@@ -8,7 +8,7 @@ class HeadElement
     /**
      * @var string
      */
-    private $element;
+    protected $element;
 
     /**
      * @var bool
@@ -100,7 +100,7 @@ class HeadElement
         $attributeString = ' ' . implode(' ', $attributes);
 
         $string = $this->content
-          ? "<{$this->element}{$attributeString}>\n{$this->content}\n</{$this->element}"
+          ? "<{$this->element}{$attributeString}>\n{$this->content}\n</{$this->element}>"
           : "<{$this->element}{$attributeString} />";
 
         return $this->noScript
