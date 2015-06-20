@@ -87,6 +87,11 @@ class HeadElement
         return $this->attributes;
     }
 
+    protected function setContent($content)
+    {
+        $this->content = $content;
+    }
+
     public function __toString()
     {
         // Remove any empty or false values.

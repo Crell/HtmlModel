@@ -14,48 +14,9 @@ class StyleElement extends HeadElement
         'disabled', // Boolean. If set disables (does not apply) the style rules, specified within the element, to the Document.
     ];
 
-    /**
-     *
-     *
-     * @var string
-     */
-    private $type = 'text/css';
-
-    /**
-     *
-     *
-     *
-     *
-     * @var string
-     */
-    private $media;
-
-    /**
-     *
-     *
-     * @var string
-     */
-    private $title;
-
-    /**
-     *
-     *
-     * @var boolean
-     */
-    private $disabled;
-
-    /**
-     * The body of the element.
-     *
-     * @var string
-     */
-    private $body;
-
-    public function __construct($body)
+    public function __construct($content)
     {
-        $this->body = $body;
+        $this->setContent($content);
+        $this->setAttribute('type', 'text/css');
     }
-
-
-
 }
