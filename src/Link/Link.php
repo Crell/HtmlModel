@@ -3,35 +3,14 @@
 namespace Crell\HtmlModel\Link;
 
 
-class Link implements LinkInterface
+class Link implements LinkInterface, ModifiableLinkInterface
 {
     use LinkTrait;
+    use LinkModifiersTrait;
 
-    public function __construct($href, $rel)
+    public function __construct($rel, $href)
     {
-        $this->href = $href;
         $this->rel = $rel;
+        $this->href = $href;
     }
-
-    public function withHref($href)
-    {
-        $that = clone($this);
-        $that->href = $href;
-        return $that;
-    }
-
-    public function withRel($rel)
-    {
-        $that = clone($this);
-        $that->rel = $rel;
-        return $that;
-    }
-
-    public function withAttribute($key, $value)
-    {
-        $that = clone($this);
-        $that->attributes[$key] = $value;
-        return $that;
-    }
-
 }

@@ -2,6 +2,7 @@
 
 namespace Crell\HtmlModel\Test;
 
+use Crell\HtmlModel\LinkElement;
 use Crell\HtmlModel\StyleElement;
 
 class HeadElementTest extends \PHPUnit_Framework_TestCase
@@ -24,5 +25,14 @@ class HeadElementTest extends \PHPUnit_Framework_TestCase
         $rendered = "<style type=\"text/css\">\nCSS goes here\n</style>";
 
         $this->assertEquals($rendered, (string)$style);
+    }
+
+    public function testLinkElement()
+    {
+        $link = new LinkElement('self', 'http://www.google.com/');
+
+        $rendered = "<link rel=\"self\" href=\"http://www.google.com/\" />";
+
+        $this->assertEquals($rendered, (string)$link);
     }
 }

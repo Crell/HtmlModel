@@ -60,12 +60,17 @@ class HeadElement
      * @return $this
      */
     protected function withAttribute($key, $value) {
-        if (in_array($key, $this->allowedAttributes)) {
+        if (empty($this->allowedAttributes) || in_array($key, $this->allowedAttributes)) {
             $that = clone($this);
             $that->attributes[$key] = $value;
             return $that;
         }
         return $this;
+    }
+
+    public function getAttribute($key)
+    {
+        return isset($this->attributes[$key]) ? $this->attributes[$key] : '';
     }
 
     /**
