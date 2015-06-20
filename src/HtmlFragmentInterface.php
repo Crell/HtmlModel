@@ -12,9 +12,4 @@ namespace Crell\HtmlModel;
 interface HtmlFragmentInterface
 {
 
-    /**
-     * @return string
-     */
-    public function getBody();
-
 }
