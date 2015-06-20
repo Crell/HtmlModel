@@ -15,7 +15,7 @@ class HeadElementTest extends \PHPUnit_Framework_TestCase
     {
         $style = new StyleElement('CSS goes here');
 
-        $this->assertContains('text/css', $style->getAttributes());
+        $this->assertContains('text/css', $style->getAttributes()->get('type'));
     }
 
     public function testStyleElementRender()

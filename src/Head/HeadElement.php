@@ -3,6 +3,8 @@
 namespace Crell\HtmlModel\Head;
 
 
+use Crell\HtmlModel\AttributeBag;
+
 class HeadElement
 {
     use AttributeTrait;
@@ -21,6 +23,12 @@ class HeadElement
      * @var string
      */
     private $content;
+
+
+    public function __construct()
+    {
+        $this->attributes = new AttributeBag();
+    }
 
     /**
      * Sets if this element should be wrapped in <noscript>.
@@ -44,31 +52,28 @@ class HeadElement
 
     public function __toString()
     {
-        // Remove any empty or false values.
-        $attributes = array_filter($this->attributes);
-        $attributes = array_map([$this,'renderAttribute'], array_keys($attributes), array_values($attributes));
-        $attributeString = ' ' . implode(' ', $attributes);
-
         $string = $this->content
-          ? "<{$this->element}{$attributeString}>\n{$this->content}\n</{$this->element}>"
-          : "<{$this->element}{$attributeString} />";
+          ? "<{$this->element}{$this->attributes}>\n{$this->content}\n</{$this->element}>"
+          : "<{$this->element}{$this->attributes} />";
 
         return $this->noScript
           ? "<noscript>$string</noscript>"
           : $string;
     }
 
-    private function renderAttribute($key, $value)
+    /**
+     * Sets a new attribute bag with the specified attributes.
+     *
+     * This method is only to be used to set defaults from a child class's
+     * constructor, as it mutates the object. That's fine within the constructor
+     * but at no other time.
+     *
+     * @param array $attributes
+     *   An array of the legal attribute keys for this element, and their default
+     *   values. If left empty, all attributes will be legal.
+     */
+    protected function setAttributes(array $attributes = [])
     {
-        if (is_bool($value)) {
-            return $key;
-        }
-
-        // @todo We may need to special case some attributes. Sigh.
-        if (is_array($value)) {
-            $value = implode(' ', $value);
-        }
-
-        return "{$key}=\"{$value}\"";
+        $this->attributes = new AttributeBag($attributes);
     }
 }

@@ -2,19 +2,16 @@
 
 namespace Crell\HtmlModel\Head;
 
+use Crell\HtmlModel\AttributeBag;
+
 
 trait AttributeTrait
 {
 
     /**
-     * @var array
+     * @var AttributeBag
      */
-    private $attributes = [];
-
-    /**
-     * @var array
-     */
-    protected $allowedAttributes = [];
+    private $attributes;
 
     /**
      * Returns a copy of the element with the attribute set.
@@ -31,36 +28,26 @@ trait AttributeTrait
      * @return $this
      */
     protected function withAttribute($key, $value) {
-        if (empty($this->allowedAttributes) || in_array($key, $this->allowedAttributes)) {
-            $that = clone($this);
-            $that->attributes[$key] = $value;
-            return $that;
+        $newAttributes = $this->attributes->withAttribute($key, $value);
+
+        // If there was no change, don't bother changing this object either.
+        if ($newAttributes === $this->attributes) {
+            return $this;
         }
-        return $this;
+
+        $that = clone($this);
+        $that->attributes = $newAttributes;
+
+        return $that;
     }
 
     public function getAttribute($key)
     {
-        return isset($this->attributes[$key]) ? $this->attributes[$key] : '';
+        return $this->attributes->get($key);
     }
 
-    /**
-     * Sets the value of an attribute directly.
-     *
-     * This method is only to be used to set defaults from a child class's
-     * constructor, or for setting attributes that are required by other
-     * attributes.
-     *
-     * @param string $key
-     * @param string|array $value
-     */
-    protected function setAttribute($key, $value)
-    {
-        $this->attributes[$key] = $value;
-    }
 
     public function getAttributes() {
         return $this->attributes;
     }
-
 }

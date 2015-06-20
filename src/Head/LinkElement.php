@@ -9,13 +9,14 @@ class LinkElement extends HeadElement implements LinkInterface, ModifiableLinkIn
 {
     protected $element = 'link';
 
-    // @todo Add a list of allows attributes, since HTML's allowed list is finite.
-    // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link
-
     public function __construct($rel, $href)
     {
-        $this->setAttribute('rel', $rel);
-        $this->setAttribute('href', $href);
+        // @todo Add the full list of allows attributes.
+        // See https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link
+        $this->setAttributes([
+            'rel' => $rel,
+            'href' => $href,
+        ]);
     }
 
     /**
@@ -52,6 +53,8 @@ class LinkElement extends HeadElement implements LinkInterface, ModifiableLinkIn
 
     /**
      * {@inheritdoc}
+     *
+     * Force this method public to comply with ModifiableLinkInterface
      */
     public function withAttribute($key, $value)
     {

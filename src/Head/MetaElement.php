@@ -5,18 +5,23 @@ namespace Crell\HtmlModel\Head;
 
 class MetaElement extends HeadElement
 {
-
     protected $element = 'meta';
 
-    // @Skipping for now; come back when we refactor it to a collection object.
-    protected $allowedAttributes = [];
-
+    /**
+     * Creates a new MetaElement.
+     *
+     * @param string $contentAttribute
+     *   The value of the "content" attribute.
+     * @param array $attributes
+     *   An array of other attributes to include.
+     */
     public function __construct($contentAttribute, array $attributes = [])
     {
-        $this->setAttribute('content', $contentAttribute);
-        foreach ($attributes as $key => $value) {
-            $this->setAttribute($key, $value);
-        }
+        // @todo Add the rest of the legal meta attributes.
+        // @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
+        $attributes['content'] = $contentAttribute;
+
+        $this->setAttributes($attributes);
     }
 
 }
