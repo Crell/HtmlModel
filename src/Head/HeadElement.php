@@ -1,6 +1,6 @@
 <?php
 
-namespace Crell\HtmlModel;
+namespace Crell\HtmlModel\Head;
 
 
 class HeadElement

@@ -2,8 +2,8 @@
 
 namespace Crell\HtmlModel\Test;
 
-use Crell\HtmlModel\LinkElement;
-use Crell\HtmlModel\StyleElement;
+use Crell\HtmlModel\Head\LinkElement;
+use Crell\HtmlModel\Head\StyleElement;
 
 class HeadElementTest extends \PHPUnit_Framework_TestCase
 {

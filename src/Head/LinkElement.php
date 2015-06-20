@@ -1,6 +1,6 @@
 <?php
 
-namespace Crell\HtmlModel;
+namespace Crell\HtmlModel\Head;
 
 use Crell\HtmlModel\Link\LinkInterface;
 use Crell\HtmlModel\Link\ModifiableLinkInterface;
