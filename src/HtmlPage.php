@@ -4,16 +4,18 @@ namespace Crell\HtmlModel;
 
 use Crell\HtmlModel\Head\BaseElement;
 use Crell\HtmlModel\Head\HeadElement;
-use Crell\HtmlModel\Head\ScriptElement;
-use Crell\HtmlModel\Head\StyleElement;
-use Crell\HtmlModel\Head\StyleLinkElement;
 use Crell\HtmlModel\Link\Linkable;
 use Crell\HtmlModel\Link\LinkInterface;
 
-
-class HtmlPage implements Linkable, ContentElementInterface
+/**
+ * Value object representing an entire HTML page.
+ */
+class HtmlPage implements Linkable, ContentElementInterface, StatusCodeContainerInterface, StyleContainerInterface, ScriptContainerInterface
 {
     use ContentElementTrait;
+    use StyleContainerTrait;
+    use ScriptContainerTrait;
+    use StatusCodeContainerTrait;
 
     /**
      * Attributes for the HTML element.
@@ -29,12 +31,6 @@ class HtmlPage implements Linkable, ContentElementInterface
      */
     private $bodyAttributes;
 
-    /**
-     * The HTTP status code of this page.
-     *
-     * @var int
-     */
-    private $statusCode = 200;
 
     /**
      * All of the Header elements for this page.
@@ -44,20 +40,6 @@ class HtmlPage implements Linkable, ContentElementInterface
      * @var HeadElement[]
      */
     private $headElements = [];
-
-    /**
-     * A collection of style links on the page.
-     *
-     * @var StyleLinkElement[]
-     */
-    private $styleLinks = [];
-
-    /**
-     * A collection of inline style elements on the page.
-     *
-     * @var StyleElement[]
-     */
-    private $styles = [];
 
     /**
      * The base element for this page, if any.
@@ -74,20 +56,6 @@ class HtmlPage implements Linkable, ContentElementInterface
      * @var string
      */
     private $title = '';
-
-    /**
-     * A collection of the scripts defined for this page.
-     *
-     * Both the header and footer arrays are an array of ScriptElement objects.
-     *
-     * @todo: Should this be a more formal data structure? Probably.
-     *
-     * @var array
-     */
-    private $scripts = [
-      'header' => [],
-      'footer' => [],
-    ];
 
     /**
      * Constructs a new HtmlPage.
@@ -196,90 +164,6 @@ class HtmlPage implements Linkable, ContentElementInterface
     }
 
     /**
-     * Returns a copy of the page with the script added.
-     *
-     * @param ScriptElement $script
-     * @param string $scope
-     *   The scope in which the script should be defined. Legal values are "header"
-     *   (i.e., in the <head> element) and "footer" (i.e., right before </body>).
-     *
-     * @return static
-     */
-    public function withScript(ScriptElement $script, $scope = 'header')
-    {
-        // These are the only legal values.
-        assert('in_array($scope, [\'header\', \'footer\'])');
-
-        $that = clone($this);
-        $this->scripts[$scope][] = $script;
-        return $that;
-    }
-
-    /**
-     * Returns the Script elements on this Page.
-     *
-     * @todo Make scopes work.
-     *
-     * @param string $scope
-     *   The scope for which to return Script elements.
-     *
-     * @return ScriptElement[]
-     *   All JavaScript elements for the specified scope.
-     */
-    public function getScripts($scope = 'header') {
-        return $this->scripts[$scope];
-    }
-
-    /**
-     * Returns a copy of the page with the style link added.
-     *
-     * @param StyleLinkElement $element
-     *
-     * @return static
-     */
-    public function withStyleLink(StyleLinkElement $element)
-    {
-        $that = clone($this);
-        $that->styleLinks[] = $element;
-        return $that;
-    }
-
-    /**
-     * Returns the style link elements on this page.
-     *
-     * @return StyleLinkElement[]
-     *   The style links on this page.
-     */
-    public function getStyleLinks()
-    {
-        return $this->styleLinks;
-    }
-
-    /**
-     * Returns a copy of the page with the style added.
-     *
-     * @param StyleElement $element
-     *   The style element to add.
-     * @return static
-     */
-    public function withInlineStyle(StyleElement $element)
-    {
-        $that = clone($this);
-        $that->styles[] = $element;
-        return $that;
-    }
-
-    /**
-     * Returns the inline style elements on this page.
-     *
-     * @return StyleElement[]
-     */
-    public function getInlineStyles()
-    {
-        return $this->styles;
-    }
-
-    /**
      * Returns the title of the page.
      *
      * @return string
@@ -302,35 +186,6 @@ class HtmlPage implements Linkable, ContentElementInterface
     {
         $that = clone($this);
         $that->title = $title;
-        return $that;
-    }
-
-    /**
-     * Returns the status code of this response.
-     *
-     * @return int
-     *   The status code of this page.
-     */
-    public function getStatusCode()
-    {
-        return $this->statusCode;
-    }
-
-    /**
-     * Returns a copy of the page with the status code set.
-     *
-     * @param int $code
-     *   The status code to set.
-     * @return static
-     */
-    public function withStatusCode($code)
-    {
-        if ($this->statusCode == $code) {
-            return $this;
-        }
-
-        $that = clone($this);
-        $that->statusCode = $code;
         return $that;
     }
 
