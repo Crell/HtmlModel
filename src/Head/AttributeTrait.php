@@ -27,7 +27,7 @@ trait AttributeTrait
      *
      * @return $this
      */
-    protected function withAttribute($key, $value) {
+    public function withAttribute($key, $value) {
         $newAttributes = $this->attributes->withAttribute($key, $value);
 
         // If there was no change, don't bother changing this object either.
