@@ -18,4 +18,16 @@ class HeadElementTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('bar', $head2->getAttribute('foo'));
         $this->assertEquals('', $head3->getAttribute('foo'));
     }
+
+    public function testNoScript()
+    {
+        $head = new HeadElement();
+        $head2 = $head
+            ->withNoScript()
+            ->withAttribute('foo', 'bar');
+
+        $expected = '<noscript>< foo="bar" /></noscript>';
+
+        $this->assertEquals($expected, (string)$head2);
+    }
 }
