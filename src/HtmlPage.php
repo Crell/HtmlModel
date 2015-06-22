@@ -10,7 +10,7 @@ use Crell\HtmlModel\Link\LinkInterface;
 
 class HtmlPage implements Linkable, ContentElementInterface
 {
-    use ContentTrait;
+    use ContentElementTrait;
 
     /**
      * Attributes for the HTML element.

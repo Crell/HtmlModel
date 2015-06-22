@@ -5,7 +5,7 @@ namespace Crell\HtmlModel;
 /**
  * Supporting trait to implement ContentElementInterface.
  */
-trait ContentTrait
+trait ContentElementTrait
 {
     /**
      * The body content of this page.

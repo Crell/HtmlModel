@@ -4,11 +4,11 @@ namespace Crell\HtmlModel\Head;
 
 
 use Crell\HtmlModel\ContentElementInterface;
-use Crell\HtmlModel\ContentTrait;
+use Crell\HtmlModel\ContentElementTrait;
 
 class StyleElement extends HeadElement implements ContentElementInterface
 {
-    use ContentTrait;
+    use ContentElementTrait;
 
     protected $element = 'style';
 

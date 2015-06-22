@@ -5,7 +5,7 @@ namespace Crell\HtmlModel\Head;
 
 use Crell\HtmlModel\AttributeBag;
 use Crell\HtmlModel\ContentElementInterface;
-use Crell\HtmlModel\ContentTrait;
+use Crell\HtmlModel\ContentElementTrait;
 
 class HeadElement
 {
