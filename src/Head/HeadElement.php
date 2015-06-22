@@ -4,10 +4,15 @@ namespace Crell\HtmlModel\Head;
 
 
 use Crell\HtmlModel\AttributeBag;
+use Crell\HtmlModel\ContentTrait;
 
 class HeadElement
 {
     use AttributeTrait;
+
+    // Note: We may want to not do this here and instead use it in individual
+    // elements that allow content. That may impact _toString(), though. TBD.
+    use ContentTrait;
 
     /**
      * @var string
@@ -43,11 +48,6 @@ class HeadElement
         $that = clone($this);
         $that->noScript = $value;
         return $that;
-    }
-
-    protected function setContent($content)
-    {
-        $this->content = $content;
     }
 
     public function __toString()
