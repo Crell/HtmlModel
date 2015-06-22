@@ -5,7 +5,6 @@ namespace Crell\HtmlModel\Head;
 
 use Crell\HtmlModel\AttributeBag;
 use Crell\HtmlModel\ContentElementInterface;
-use Crell\HtmlModel\ContentElementTrait;
 
 class HeadElement
 {
@@ -44,8 +43,8 @@ class HeadElement
     public function __toString()
     {
         $string = ($this instanceof ContentElementInterface && $this->getContent())
-          ? "<{$this->element}{$this->attributes}>\n{$this->getContent()}\n</{$this->element}>"
-          : "<{$this->element}{$this->attributes} />";
+          ? "<{$this->element}{$this->getAttributes()}>\n{$this->getContent()}\n</{$this->element}>"
+          : "<{$this->element}{$this->getAttributes()} />";
 
         return $this->noScript
           ? "<noscript>$string</noscript>"
