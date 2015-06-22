@@ -64,7 +64,8 @@ class AttributeBag implements \Countable
     {
         if ($this->restricted) {
             if (!in_array($offset, array_keys($this->attributes))) {
-                return $this;
+                $message = sprintf('%s it not an allowed attribute on this object. The only allowed attributes are %s', $offset, implode(',', array_keys($this->attributes)));
+                throw new \InvalidArgumentException($message);
             }
         }
 
