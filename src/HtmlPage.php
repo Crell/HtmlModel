@@ -8,7 +8,7 @@ use Crell\HtmlModel\Link\Linkable;
 use Crell\HtmlModel\Link\LinkInterface;
 
 
-class HtmlPage implements Linkable
+class HtmlPage implements Linkable, ContentElementInterface
 {
     use ContentTrait;
 

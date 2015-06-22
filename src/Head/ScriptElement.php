@@ -3,8 +3,13 @@
 namespace Crell\HtmlModel\Head;
 
 
-class ScriptElement extends HeadElement
+use Crell\HtmlModel\ContentElementInterface;
+use Crell\HtmlModel\ContentTrait;
+
+class ScriptElement extends HeadElement implements ContentElementInterface
 {
+    use ContentTrait;
+
     protected $element = 'script';
 
     /**
@@ -13,7 +18,7 @@ class ScriptElement extends HeadElement
      * @param string $src
      *   The URI of an external script.
      */
-    public function __construct($src)
+    public function __construct($src = '')
     {
         $this->setAttributes([
             'src' => $src,                      // The URI of an external script.
@@ -22,6 +27,4 @@ class ScriptElement extends HeadElement
             'async' => false,                   // Boolean. If True, indicates that the browser should, if possible, execute the script asynchronously.
         ]);
     }
-
-
 }

@@ -30,4 +30,14 @@ class StyleElementTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals(true, $style2->getAttribute('disabled'));
         $this->assertEquals('SCSS goes here', $style2->getContent());
     }
+
+    public function testRender()
+    {
+        $style = new StyleElement('CSS goes here');
+
+        $rendered = "<style type=\"text/css\">\nCSS goes here\n</style>";
+
+        $this->assertEquals($rendered, (string)$style);
+    }
+
 }

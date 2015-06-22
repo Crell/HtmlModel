@@ -4,15 +4,12 @@ namespace Crell\HtmlModel\Head;
 
 
 use Crell\HtmlModel\AttributeBag;
+use Crell\HtmlModel\ContentElementInterface;
 use Crell\HtmlModel\ContentTrait;
 
 class HeadElement
 {
     use AttributeTrait;
-
-    // Note: We may want to not do this here and instead use it in individual
-    // elements that allow content. That may impact _toString(), though. TBD.
-    use ContentTrait;
 
     /**
      * @var string
@@ -52,8 +49,8 @@ class HeadElement
 
     public function __toString()
     {
-        $string = $this->content
-          ? "<{$this->element}{$this->attributes}>\n{$this->content}\n</{$this->element}>"
+        $string = ($this instanceof ContentElementInterface && $this->getContent())
+          ? "<{$this->element}{$this->attributes}>\n{$this->getContent()}\n</{$this->element}>"
           : "<{$this->element}{$this->attributes} />";
 
         return $this->noScript
