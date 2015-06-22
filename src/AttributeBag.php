@@ -77,7 +77,7 @@ class AttributeBag implements \Countable
     /**
      * {@inheritdoc}
      */
-    public function remove($offset)
+    public function withoutAttribute($offset)
     {
         // If it's already not here, do nothing.
         if (!isset($this->attributes[$offset])) {

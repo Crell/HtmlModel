@@ -120,7 +120,7 @@ class AttributeBagTest extends \PHPUnit_Framework_TestCase
           'sample' => 'value',
         ]);
 
-        $bag2 = $bag->remove('sample');
+        $bag2 = $bag->withoutAttribute('sample');
 
         $this->assertTrue($bag2->has('sample'));
         $this->assertFalse($bag2->get('sample'));
@@ -137,7 +137,7 @@ class AttributeBagTest extends \PHPUnit_Framework_TestCase
         ]);
 
         // This should throw no error.
-        $bag2 = $bag->remove('nyet');
+        $bag2 = $bag->withoutAttribute('nyet');
 
         $this->assertFalse($bag2->has('nyet'));
     }
