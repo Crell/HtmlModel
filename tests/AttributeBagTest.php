@@ -33,9 +33,10 @@ class AttributeBagTest extends \PHPUnit_Framework_TestCase
           'empty' => '',
           'forreals' => true,
           'nope' => false,
+          'list' => ['a', 'b', 'c']
         ]);
 
-        $expected = " normal=\"value\" forreals";
+        $expected = " normal=\"value\" forreals list=\"a b c\"";
         $this->assertEquals($expected, (string)$bag);
     }
 
@@ -46,12 +47,41 @@ class AttributeBagTest extends \PHPUnit_Framework_TestCase
     {
         $bag = new AttributeBag();
 
-        $bag = $bag->withAttribute('normal', 'value')
-            ->withAttribute('empty', '')
-            ->withAttribute('forreals', true)
-            ->withAttribute('nope', false);
+        // Note that the order the attributes are set determines the render order.
+        $bag = $bag
+          ->withAttribute('normal', 'value')
+          ->withAttribute('forreals', true)
+          ->withAttribute('list', ['a','b', 'c'])
+          ->withAttribute('empty', '')
+          ->withAttribute('nope', false);
 
-        $expected = " normal=\"value\" forreals";
+        $expected = " normal=\"value\" forreals list=\"a b c\"";
+        $this->assertEquals($expected, (string)$bag);
+    }
+
+    /**
+     * Confirms that a bag stringifies in the order of its constructor.
+     */
+    public function testStringifyAttributeOrder()
+    {
+        $bag = new AttributeBag([
+          'normal' => 'value',
+          'empty' => '',
+          'forreals' => true,
+          'nope' => false,
+          'list' => ['a', 'b', 'c']
+        ]);
+
+        // Note this order is different than the constructor order, but constructor
+        // order should win.
+        $bag = $bag
+          ->withAttribute('list', ['a','b', 'c'])
+          ->withAttribute('forreals', true)
+          ->withAttribute('empty', '')
+          ->withAttribute('nope', false)
+         ->withAttribute('normal', 'value');
+
+        $expected = " normal=\"value\" forreals list=\"a b c\"";
         $this->assertEquals($expected, (string)$bag);
     }
 
