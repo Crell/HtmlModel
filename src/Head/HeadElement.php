@@ -21,12 +21,6 @@ class HeadElement
      */
     private $noScript = false;
 
-    /**
-     * @var string
-     */
-    private $content;
-
-
     public function __construct()
     {
         $this->attributes = new AttributeBag();
