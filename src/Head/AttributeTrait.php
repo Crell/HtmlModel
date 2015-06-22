@@ -25,7 +25,7 @@ trait AttributeTrait
      * @param string|array $value
      *   The value to which to set it.
      *
-     * @return $this
+     * @return self
      */
     public function withAttribute($key, $value) {
         $newAttributes = $this->attributes->withAttribute($key, $value);
@@ -38,6 +38,22 @@ trait AttributeTrait
         $that = clone($this);
         $that->attributes = $newAttributes;
 
+        return $that;
+    }
+
+
+    /**
+     * Returns a copy of the element with the attribute removed.
+     *
+     * @param $key
+     *   The offset to remove.
+     * @return self
+     */
+    public function withoutAttribute($key)
+    {
+        $newAttributes = $this->attributes->withoutAttribute($key);
+        $that = clone($this);
+        $that->attributes = $newAttributes;
         return $that;
     }
 

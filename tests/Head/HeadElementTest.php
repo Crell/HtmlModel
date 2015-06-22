@@ -13,9 +13,9 @@ class HeadElementTest extends \PHPUnit_Framework_TestCase
         $head = new HeadElement();
 
         $head2 = $head->withAttribute('foo', 'bar');
-        $head3 = $head->withAttribute('foo', 'bar');
+        $head3 = $head->withoutAttribute('foo');
 
         $this->assertEquals('bar', $head2->getAttribute('foo'));
-        $this->assertEquals('bar', $head3->getAttribute('foo'));
+        $this->assertEquals('', $head3->getAttribute('foo'));
     }
 }
