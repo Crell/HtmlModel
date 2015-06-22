@@ -68,4 +68,47 @@ class AttributeBagTest extends \PHPUnit_Framework_TestCase
 
         $bag = $bag->withAttribute('notWhiteListed', 'value');
     }
+
+    /**
+     * Confirms that whitelisted attributes can be set via a method.
+     */
+    public function testSetAllowedAttribute()
+    {
+        $bag = new AttributeBag([
+          'sample' => '',
+        ]);
+
+        $bag2 = $bag->withAttribute('sample', 'value');
+
+        $this->assertCount(1, $bag2);
+        $this->assertEquals('value', $bag2->get('sample'));
+    }
+
+    public function testRemoveAllowedAttribute()
+    {
+        $bag = new AttributeBag([
+          'sample' => 'value',
+        ]);
+
+        $bag2 = $bag->remove('sample');
+
+        $this->assertTrue($bag2->has('sample'));
+        $this->assertFalse($bag2->get('sample'));
+        $this->assertEquals('value', $bag->get('sample'));
+    }
+
+    /**
+     * Confirms that removing an invalid attribute silently works.
+     */
+    public function testRemoveDisallowedAttribute()
+    {
+        $bag = new AttributeBag([
+          'sample' => '',
+        ]);
+
+        // This should throw no error.
+        $bag2 = $bag->remove('nyet');
+
+        $this->assertFalse($bag2->has('nyet'));
+    }
 }
