@@ -57,7 +57,7 @@ class AttributeBag implements \Countable
      *
      * @param string $offset
      * @param string $value
-     * @return static
+     * @return self
      *
      */
     public function withAttribute($offset, $value)
