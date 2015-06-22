@@ -57,12 +57,29 @@ trait AttributeTrait
         return $that;
     }
 
+    /**
+     * Returns a single attribute.
+     *
+     * @param $key
+     *   The attribute to return.
+     * @return string|int|boolean|array
+     *   The attribute, if it exists. Usually this is a string, but could also
+     *   be an int, boolean, or array.
+     */
     public function getAttribute($key)
     {
         return $this->attributes->get($key);
     }
 
-
+    /**
+     * Returns the attribute bag itself.
+     *
+     * Note: This may be a bad idea as it violates the Suggestion of Demeter.
+     * However, since AttributeBag is stringable it seems reasonable to
+     * print $element->getAttributes() and let the magic happen. Open to discussion.
+     *
+     * @return AttributeBag
+     */
     public function getAttributes() {
         return $this->attributes;
     }
