@@ -316,6 +316,13 @@ class HtmlPage implements Linkable, ContentElementInterface
         return $this->statusCode;
     }
 
+    /**
+     * Returns a copy of the page with the status code set.
+     *
+     * @param int $code
+     *   The status code to set.
+     * @return static
+     */
     public function withStatusCode($code)
     {
         if ($this->statusCode == $code) {
