@@ -4,7 +4,7 @@ namespace Crell\HtmlModel\Test\Head;
 
 use Crell\HtmlModel\Head\BaseElement;
 
-class BaseElementTest extends HeadElementTest
+class BaseElementTest extends \PHPUnit_Framework_TestCase
 {
 
     public function testConstructor()
