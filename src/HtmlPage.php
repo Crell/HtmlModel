@@ -164,6 +164,19 @@ class HtmlPage implements Linkable, ContentElementInterface, StatusCodeContainer
     }
 
     /**
+     * Returns an array of all Head elements on this object.
+     *
+     * Remember that some head-scoped elements may have their own alternate
+     * colletions and won't be included here.
+     *
+     * @return HeadElement[]
+     */
+    public function getHeadElements()
+    {
+        return $this->headElements;
+    }
+
+    /**
      * Returns the title of the page.
      *
      * @return string
