@@ -10,6 +10,8 @@ use Crell\HtmlModel\Link\LinkInterface;
 
 class HtmlPage implements Linkable
 {
+    use ContentTrait;
+
     /**
      * Attributes for the HTML element.
      *
