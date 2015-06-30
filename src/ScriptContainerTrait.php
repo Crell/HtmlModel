@@ -37,7 +37,7 @@ trait ScriptContainerTrait
         assert('in_array($scope, [\'header\', \'footer\'])');
 
         $that = clone($this);
-        $this->scripts[$scope][] = $script;
+        $that->scripts[$scope][] = $script;
         return $that;
     }
 
