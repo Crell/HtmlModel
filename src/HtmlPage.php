@@ -217,9 +217,9 @@ class HtmlPage implements Linkable, ContentElementInterface, StatusCodeContainer
      */
     public function getLinks()
     {
-        return array_filter($this->headElements, function(HeadElement $element) {
+        return array_values($this->getStyleLinks() + array_filter($this->headElements, function(HeadElement $element) {
             return $element instanceof LinkInterface;
-        });
+        }));
     }
 
     /**

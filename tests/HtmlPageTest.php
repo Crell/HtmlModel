@@ -154,6 +154,24 @@ class HtmlPageTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('http://www.example.com/', $head_elements[1]->getAttribute('href'));
     }
 
+    public function testLinks()
+    {
+        $html = new HtmlPage();
+
+        /** @var HtmlPage $html */
+        $html = $html
+          ->withHeadElement(new MetaElement('foo'))
+          ->withHeadElement(new LinkElement('canonical', 'http://www.example.com/'))
+          ->withStyleLink(new StyleLinkElement('css.css'))
+        ;
+
+        $links = $html->getLinks();
+        $this->assertCount(2, $links);
+        $this->assertInstanceOf(StyleLinkElement::class, $links[0]);
+        $this->assertInstanceOf(LinkElement::class, $links[1]);
+
+    }
+
     public function testRender()
     {
         $html = new HtmlPage();
