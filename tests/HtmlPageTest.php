@@ -184,13 +184,36 @@ class HtmlPageTest extends \PHPUnit_Framework_TestCase
           ->withBase(new BaseElement('http://www.example.com/'))
           ->withHeadElement(new MetaElement('foo'))
           ->withHeadElement(new LinkElement('canonical', 'http://www.example.com/'))
-          ->withScript(new ScriptElement('js.js'))
+          ->withScript(new ScriptElement('header.js'))
+          ->withScript(new ScriptElement('footer.js'), 'footer')
           ->withStyleLink(new StyleLinkElement('css.css'))
           ->withInlineStyle(new StyleElement('CSS here'))
           ->withContent('Body here')
         ;
 
         $this->assertEquals('Test page', $html->getTitle());
+
+        $expected = <<<END
+<html manifest="example.appcache">
+<head>
+<title>Test page</title>
+<base href="http://www.example.com/" />
+<meta content="foo" />
+<link rel="canonical" href="http://www.example.com/" />
+<link rel="stylesheet" href="css.css" />
+<style type="text/css">
+CSS here
+</style>
+<script src="header.js" type="application/javascript" />
+</head>
+<body>
+Body here
+<script src="footer.js" type="application/javascript" />
+</body>
+</html>
+END;
+
+        $this->assertEquals($expected, (string)$html);
 
         //print $html;
 

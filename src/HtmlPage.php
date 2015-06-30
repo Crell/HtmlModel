@@ -250,4 +250,51 @@ class HtmlPage implements Linkable, ContentElementInterface, StatusCodeContainer
 
         return $that;
     }
+
+    /**
+     * Returns an array of all elements that should appear in the <head>.
+     *
+     * Scripts that should appear in the footer are not included.
+     *
+     * Note: Title is excluded from this list as it is not modeled as a
+     * HeadElement. Maybe it should be?
+     *
+     * @return HeadElement[]
+     */
+    public function getAllHeadElements()
+    {
+        return array_merge(
+          [$this->getBase()],
+          $this->getHeadElements(),
+          $this->getStyleLinks(),
+          $this->getInlineStyles(),
+          $this->getScripts('header'));
+    }
+
+    /**
+     * Renders this page object to an HTML string.
+     *
+     * @return string
+     */
+    public function __toString()
+    {
+        $title = $this->getTitle() ? "<title>{$this->getTitle()}</title>" : '';
+        $head = implode(PHP_EOL, $this->getAllHeadElements());
+        $footer_scripts = implode(PHP_EOL, $this->getScripts('footer'));
+
+        $out = <<<END
+<html{$this->getHtmlAttributes()}>
+<head>
+{$title}
+{$head}
+</head>
+<body>
+{$this->getContent()}
+{$footer_scripts}
+</body>
+</html>
+END;
+
+        return $out;
+    }
 }
