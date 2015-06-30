@@ -2,10 +2,13 @@
 
 namespace Crell\HtmlModel\Link;
 
-
+/**
+ * Methods to modify LinkInterface objects in an immutable way.
+ *
+ * @todo Find a better name for this since they're not actually modifiers.
+ */
 interface ModifiableLinkInterface
 {
-
     /**
      * @param $href
      *

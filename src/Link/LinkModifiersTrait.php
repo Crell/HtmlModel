@@ -2,7 +2,9 @@
 
 namespace Crell\HtmlModel\Link;
 
-
+/**
+ * Standard implementations of ModifiableLinkInterface
+ */
 trait LinkModifiersTrait
 {
 
