@@ -147,9 +147,9 @@ class HtmlPageTest extends \PHPUnit_Framework_TestCase
 
         $head_elements = $html->getHeadElements();
         $this->assertCount(2, $head_elements);
-        $this->assertInstanceOf(MetaElement::class, $head_elements[0]);
+        $this->assertInstanceOf('\Crell\HtmlModel\Head\MetaElement', $head_elements[0]);
         $this->assertEquals('foo', $head_elements[0]->getAttribute('content'));
-        $this->assertInstanceOf(LinkElement::class, $head_elements[1]);
+        $this->assertInstanceOf('\Crell\HtmlModel\Head\LinkElement', $head_elements[1]);
         $this->assertEquals('canonical', $head_elements[1]->getRel());
         $this->assertEquals('http://www.example.com/', $head_elements[1]->getHref());
     }
@@ -167,8 +167,8 @@ class HtmlPageTest extends \PHPUnit_Framework_TestCase
 
         $links = $html->getLinks();
         $this->assertCount(2, $links);
-        $this->assertInstanceOf(StyleLinkElement::class, $links[0]);
-        $this->assertInstanceOf(LinkElement::class, $links[1]);
+        $this->assertInstanceOf('\Crell\HtmlModel\Head\StyleLinkElement', $links[0]);
+        $this->assertInstanceOf('\Crell\HtmlModel\Head\LinkElement', $links[1]);
 
     }
 
