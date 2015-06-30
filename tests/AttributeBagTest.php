@@ -2,7 +2,6 @@
 
 namespace Crell\HtmlModel\Test;
 
-
 use Crell\HtmlModel\AttributeBag;
 
 class AttributeBagTest extends \PHPUnit_Framework_TestCase
