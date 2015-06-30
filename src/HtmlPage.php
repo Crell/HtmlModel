@@ -195,11 +195,6 @@ class HtmlPage implements HtmlPageInterface, Linkable
     {
         $newAttributes = $this->$collection->withAttribute($key, $value);
 
-        // If there was no change, don't bother changing this object either.
-        if ($newAttributes === $this->$collection) {
-            return $this;
-        }
-
         $that = clone($this);
         $that->$collection = $newAttributes;
 

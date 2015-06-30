@@ -30,11 +30,6 @@ trait AttributeTrait
     public function withAttribute($key, $value) {
         $newAttributes = $this->attributes->withAttribute($key, $value);
 
-        // If there was no change, don't bother changing this object either.
-        if ($newAttributes === $this->attributes) {
-            return $this;
-        }
-
         $that = clone($this);
         $that->attributes = $newAttributes;
 
