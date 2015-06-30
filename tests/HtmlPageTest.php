@@ -215,7 +215,11 @@ END;
 
         $this->assertEquals($expected, (string)$html);
 
-        //print $html;
+        // @todo Flesh this out to use SimpleXML and XPath for tests
+        // rather than a big fragile string.
 
+        /** @var \SimpleXmlElement $xml */
+        $xml = simplexml_load_string($html);
+        $this->assertEquals('html', $xml->getName());
     }
 }
