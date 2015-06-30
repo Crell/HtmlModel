@@ -1,10 +1,10 @@
 # HtmlModel
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/league/:package_name.svg?style=flat-square)](https://packagist.org/packages/league/:package_name)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/crell/htmlmodel.svg?style=flat-square)](https://packagist.org/packages/crell/htmlmodel)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 [![Build Status](https://travis-ci.org/Crell/HtmlModel.svg)](https://travis-ci.org/Crell/HtmlModel)
 [![Code Climate](https://codeclimate.com/github/Crell/HtmlModel/badges/gpa.svg)](https://codeclimate.com/github/Crell/HtmlModel)
-[![Total Downloads](https://img.shields.io/packagist/dt/league/:package_name.svg?style=flat-square)](https://packagist.org/packages/league/:package_name)
+[![Total Downloads](https://img.shields.io/packagist/dt/crell/htmlmodel.svg?style=flat-square)](https://packagist.org/packages/crell/htmlmodel)
 
 HtmlModel is exactly what it sounds like.  It is a series of value objects intended
 to model an HTML page.  It does not attempt to model every element in HTML (that 
