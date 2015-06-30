@@ -80,7 +80,7 @@ class HtmlPage implements Linkable, ContentElementInterface, StatusCodeContainer
      *
      * @param BaseElement $base
      *   The base element to set.
-     * @return self
+     * @return static
      */
     public function withBase(BaseElement $base)
     {
@@ -99,6 +99,16 @@ class HtmlPage implements Linkable, ContentElementInterface, StatusCodeContainer
         $that = clone($this);
         $that->baseElement = NULL;
         return $that;
+    }
+
+    /**
+     * Returns the current base element of the page.
+     *
+     * @return BaseElement
+     */
+    public function getBase()
+    {
+        return $this->baseElement;
     }
 
     /**
@@ -224,7 +234,7 @@ class HtmlPage implements Linkable, ContentElementInterface, StatusCodeContainer
      * @param string $value
      *   The value to which to set it.
      *
-     * @return $this|\Crell\HtmlModel\HtmlPage
+     * @return static
      */
     private function withAttributeHelper($collection, $key, $value)
     {

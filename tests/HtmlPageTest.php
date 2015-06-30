@@ -23,6 +23,7 @@ class HtmlPageTest extends \PHPUnit_Framework_TestCase
     public function testMethodContent()
     {
         $html = new HtmlPage('Content goes here');
+        /** @var HtmlPage $html2 */
         $html2 = $html->withContent('New stuff')->withTitle('New title');
         $this->assertEquals('New stuff', $html2->getContent());
         $this->assertEquals('New title', $html2->getTitle());
@@ -52,7 +53,16 @@ class HtmlPageTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('bar', $attributes->get('foo'));
     }
 
-    public function testSomething()
+    public function testTitle()
+    {
+        $html = new HtmlPage();
+        $html = $html
+          ->withTitle('Test page');
+
+        $this->assertEquals('Test page', $html->getTitle());
+    }
+
+    public function testAddingEverything()
     {
         $html = new HtmlPage();
 
@@ -62,10 +72,76 @@ class HtmlPageTest extends \PHPUnit_Framework_TestCase
             ->withHeadElement(new MetaElement('foo'))
             ->withHeadElement(new LinkElement('canonical', 'http://www.example.com/'))
             ->withScript(new ScriptElement('js.js'))
-            ->withStyleLink(new StyleLinkElement('css.js'))
+            ->withStyleLink(new StyleLinkElement('css.css'))
             ->withInlineStyle(new StyleElement('CSS here'))
             ->withContent('Body here')
         ;
+    }
+
+    public function testBase()
+    {
+        $html = new HtmlPage();
+        $html = $html->withBase(new BaseElement('http://www.example.com/'));
+        $this->assertEquals('http://www.example.com/', $html->getBase()->getAttribute('href'));
+
+        $html = $html->withoutBase();
+        $this->assertNull($html->getBase());
+    }
+
+    public function testScripts()
+    {
+        $html = new HtmlPage();
+
+        $inline_script = new ScriptElement();
+        $inline_script = $inline_script->withContent('Some JS here');
+
+        /** @var HtmlPage $html */
+        $html = $html
+          ->withScript(new ScriptElement('js.js'))
+          ->withScript($inline_script);
+
+        $scripts = $html->getScripts();
+
+        $this->assertCount(2, $scripts);
+        $this->assertEquals('js.js', $scripts[0]->getAttribute('src'));
+        $this->assertEquals('Some JS here', $scripts[1]->getContent());
+    }
+
+    public function testStyleLinks()
+    {
+        $html = new HtmlPage();
+
+        /** @var HtmlPage $html */
+        $html = $html
+          ->withStyleLink(new StyleLinkElement('css.css'))
+        ;
+
+        $style_links = $html->getStyleLinks();
+        $this->assertCount(1, $style_links);
+        $this->assertEquals('css.css', $style_links[0]->getAttribute('href'));
+    }
+
+    public function testRender()
+    {
+        $html = new HtmlPage();
+
+        /** @var HtmlPage $html */
+        $html = $html
+          ->withTitle('Test page')
+          ->withHtmlAttribute('manifest', 'example.appcache')
+          ->withBodyAttribute('foo', 'bar')
+          ->withBase(new BaseElement('http://www.example.com/'))
+          ->withHeadElement(new MetaElement('foo'))
+          ->withHeadElement(new LinkElement('canonical', 'http://www.example.com/'))
+          ->withScript(new ScriptElement('js.js'))
+          ->withStyleLink(new StyleLinkElement('css.css'))
+          ->withInlineStyle(new StyleElement('CSS here'))
+          ->withContent('Body here')
+        ;
+
+        $this->assertEquals('Test page', $html->getTitle());
+
+        //print $html;
 
     }
 }
