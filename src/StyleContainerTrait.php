@@ -2,8 +2,8 @@
 
 namespace Crell\HtmlModel;
 
-use Crell\HtmlModel\Head\StyleLinkElement;
 use Crell\HtmlModel\Head\StyleElement;
+use Crell\HtmlModel\Head\StyleLinkElement;
 
 trait StyleContainerTrait
 {

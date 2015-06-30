@@ -2,9 +2,8 @@
 
 namespace Crell\HtmlModel;
 
-use Crell\HtmlModel\Head\HeadElement;
 use Crell\HtmlModel\Head\BaseElement;
-use Crell\HtmlModel\Link\Linkable;
+use Crell\HtmlModel\Head\HeadElement;
 
 /**
  * Value object representing an entire HTML page.
