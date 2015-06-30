@@ -10,7 +10,7 @@ class StatusCodeContainerTraitTest extends \PHPUnit_Framework_TestCase
     public function testStatusCode()
     {
         /** @var StatusCodeContainerTrait $status */
-        $status = $this->getObjectForTrait(StatusCodeContainerTrait::class);
+        $status = $this->getObjectForTrait('\Crell\HtmlModel\StatusCodeContainerTrait');
 
         $status = $status->withStatusCode(418);
         $this->assertEquals(418, $status->getStatusCode());
@@ -19,7 +19,7 @@ class StatusCodeContainerTraitTest extends \PHPUnit_Framework_TestCase
     public function testStatusCodeNoOp()
     {
         /** @var StatusCodeContainerTrait $status */
-        $status = $this->getObjectForTrait(StatusCodeContainerTrait::class);
+        $status = $this->getObjectForTrait('\Crell\HtmlModel\StatusCodeContainerTrait');
 
         $status = $status->withStatusCode(418);
 
