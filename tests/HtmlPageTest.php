@@ -150,8 +150,8 @@ class HtmlPageTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf(MetaElement::class, $head_elements[0]);
         $this->assertEquals('foo', $head_elements[0]->getAttribute('content'));
         $this->assertInstanceOf(LinkElement::class, $head_elements[1]);
-        $this->assertEquals('canonical', $head_elements[1]->getAttribute('rel'));
-        $this->assertEquals('http://www.example.com/', $head_elements[1]->getAttribute('href'));
+        $this->assertEquals('canonical', $head_elements[1]->getRel());
+        $this->assertEquals('http://www.example.com/', $head_elements[1]->getHref());
     }
 
     public function testLinks()
