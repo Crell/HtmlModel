@@ -39,5 +39,4 @@ interface StyleContainerInterface
      * @return StyleElement[]
      */
     public function getInlineStyles();
-
 }

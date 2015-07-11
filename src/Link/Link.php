@@ -2,7 +2,6 @@
 
 namespace Crell\HtmlModel\Link;
 
-
 class Link implements LinkInterface, ModifiableLinkInterface
 {
     use LinkTrait;

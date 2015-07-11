@@ -2,7 +2,6 @@
 
 namespace Crell\HtmlModel;
 
-
 /**
  * A collection of attributes on an HTML element.
  *
@@ -10,7 +9,6 @@ namespace Crell\HtmlModel;
  */
 class AttributeBag implements \Countable
 {
-
     /**
      * @var array
      */
@@ -103,7 +101,7 @@ class AttributeBag implements \Countable
     public function __toString()
     {
         // Remove any empty or false values.
-        $attributes = array_filter(array_map([$this,'renderAttribute'], array_keys($this->attributes), array_values($this->attributes)));
+        $attributes = array_filter(array_map([$this, 'renderAttribute'], array_keys($this->attributes), array_values($this->attributes)));
 
         return $attributes
           ? ' ' . implode(' ', $attributes)

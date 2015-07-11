@@ -4,10 +4,8 @@ namespace Crell\HtmlModel\Head;
 
 use Crell\HtmlModel\AttributeBag;
 
-
 trait AttributeTrait
 {
-
     /**
      * @var AttributeBag
      */
@@ -27,7 +25,8 @@ trait AttributeTrait
      *
      * @return self
      */
-    public function withAttribute($key, $value) {
+    public function withAttribute($key, $value)
+    {
         $newAttributes = $this->attributes->withAttribute($key, $value);
 
         $that = clone($this);
@@ -75,7 +74,8 @@ trait AttributeTrait
      *
      * @return AttributeBag
      */
-    public function getAttributes() {
+    public function getAttributes()
+    {
         return $this->attributes;
     }
 }

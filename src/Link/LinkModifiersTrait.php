@@ -7,7 +7,6 @@ namespace Crell\HtmlModel\Link;
  */
 trait LinkModifiersTrait
 {
-
     public function withHref($href)
     {
         $that = clone($this);
@@ -28,5 +27,4 @@ trait LinkModifiersTrait
         $that->attributes[$key] = $value;
         return $that;
     }
-
 }

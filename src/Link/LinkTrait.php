@@ -7,7 +7,6 @@ namespace Crell\HtmlModel\Link;
  */
 trait LinkTrait
 {
-
     /**
      * @var string
      */
@@ -86,5 +85,4 @@ trait LinkTrait
     {
         return $this->attributes;
     }
-
 }

@@ -2,7 +2,6 @@
 
 namespace Crell\HtmlModel\Head;
 
-
 class BaseElement extends HeadElement
 {
     protected $element = 'base';

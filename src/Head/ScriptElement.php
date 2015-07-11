@@ -2,7 +2,6 @@
 
 namespace Crell\HtmlModel\Head;
 
-
 use Crell\HtmlModel\ContentElementInterface;
 use Crell\HtmlModel\ContentElementTrait;
 

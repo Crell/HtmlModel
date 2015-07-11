@@ -2,8 +2,6 @@
 
 namespace Crell\HtmlModel;
 
-
 interface HeadElementContainerInterface
 {
-
 }

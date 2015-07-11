@@ -32,5 +32,4 @@ trait HeadElementContainerTrait
     {
         return $this->headElements;
     }
-
 }

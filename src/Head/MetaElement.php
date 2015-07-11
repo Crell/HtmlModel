@@ -2,7 +2,6 @@
 
 namespace Crell\HtmlModel\Head;
 
-
 class MetaElement extends HeadElement
 {
     protected $element = 'meta';
@@ -23,5 +22,4 @@ class MetaElement extends HeadElement
 
         $this->setAttributes($attributes);
     }
-
 }

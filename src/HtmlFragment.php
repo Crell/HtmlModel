@@ -18,9 +18,8 @@ class HtmlFragment implements HtmlFragmentInterface, Linkable
      */
     public function getLinks()
     {
-        return array_merge($this->getStyleLinks(), array_filter($this->getHeadElements(), function(HeadElement $element) {
+        return array_merge($this->getStyleLinks(), array_filter($this->getHeadElements(), function (HeadElement $element) {
             return $element instanceof LinkInterface;
         }));
     }
-
 }

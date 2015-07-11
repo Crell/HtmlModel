@@ -80,7 +80,7 @@ class HtmlPage implements HtmlPageInterface, Linkable
     public function withoutBase()
     {
         $that = clone($this);
-        $that->baseElement = NULL;
+        $that->baseElement = null;
         return $that;
     }
 
@@ -95,7 +95,8 @@ class HtmlPage implements HtmlPageInterface, Linkable
     /**
      * {@inheritDoc}
      */
-    public function getHtmlAttributes() {
+    public function getHtmlAttributes()
+    {
         return $this->htmlAttributes;
     }
 
@@ -110,7 +111,8 @@ class HtmlPage implements HtmlPageInterface, Linkable
     /**
      * {@inheritDoc}
      */
-    public function getBodyAttributes() {
+    public function getBodyAttributes()
+    {
         return $this->bodyAttributes;
     }
 
@@ -145,7 +147,7 @@ class HtmlPage implements HtmlPageInterface, Linkable
      */
     public function getLinks()
     {
-        return array_merge($this->getStyleLinks(), array_filter($this->getHeadElements(), function(HeadElement $element) {
+        return array_merge($this->getStyleLinks(), array_filter($this->getHeadElements(), function (HeadElement $element) {
             return $element instanceof LinkInterface;
         }));
     }

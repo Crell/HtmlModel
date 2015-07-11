@@ -14,8 +14,8 @@ namespace Crell\HtmlModel;
  * @todo There's a fancy name in the spec for such elements; reame this interface
  * accordingly once we look it up.
  */
-interface ContentElementInterface {
-
+interface ContentElementInterface
+{
     /**
      * Returns the body of the element.
      *
@@ -32,5 +32,4 @@ interface ContentElementInterface {
      * @return self
      */
     public function withContent($content);
-
 }

@@ -37,5 +37,4 @@ class LinkElement extends HeadElement implements LinkInterface, ModifiableLinkIn
     {
         return $this->getAttribute('rel');
     }
-
 }

@@ -4,7 +4,6 @@ namespace Crell\HtmlModel\Link;
 
 interface LinkInterface
 {
-
     /**
      * Returns the target of the link.
      *
@@ -59,5 +58,4 @@ interface LinkInterface
      * @return array
      */
     public function getAttributes();
-
 }

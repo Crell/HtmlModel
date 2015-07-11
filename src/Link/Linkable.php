@@ -2,10 +2,8 @@
 
 namespace Crell\HtmlModel\Link;
 
-
 interface Linkable
 {
-
     /**
      * Returns a collection of LinkInterface objects.
      *

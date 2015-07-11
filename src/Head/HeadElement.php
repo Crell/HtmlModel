@@ -2,7 +2,6 @@
 
 namespace Crell\HtmlModel\Head;
 
-
 use Crell\HtmlModel\AttributeBag;
 use Crell\HtmlModel\ContentElementInterface;
 
@@ -34,7 +33,8 @@ class HeadElement
      *
      * @return $this
      */
-    public function withNoScript($value = TRUE) {
+    public function withNoScript($value = true)
+    {
         $that = clone($this);
         $that->noScript = $value;
         return $that;
