@@ -169,7 +169,6 @@ class HtmlPageTest extends \PHPUnit_Framework_TestCase
         $this->assertCount(2, $links);
         $this->assertInstanceOf('\Crell\HtmlModel\Head\StyleLinkElement', $links[0]);
         $this->assertInstanceOf('\Crell\HtmlModel\Head\LinkElement', $links[1]);
-
     }
 
     public function testRender()
