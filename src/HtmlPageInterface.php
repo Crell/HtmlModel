@@ -8,7 +8,7 @@ use Crell\HtmlModel\Head\HeadElement;
 /**
  * Value object representing an entire HTML page.
  */
-interface HtmlPageInterface extends ContentElementInterface, StatusCodeContainerInterface, StyleContainerInterface, ScriptContainerInterface
+interface HtmlPageInterface extends ContentElementInterface, StatusCodeContainerInterface, StyleContainerInterface, ScriptContainerInterface, HeadElementContainerInterface
 {
     /**
      * Returns the page with the base element set.

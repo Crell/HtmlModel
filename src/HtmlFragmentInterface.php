@@ -9,7 +9,7 @@
 namespace Crell\HtmlModel;
 
 
-interface HtmlFragmentInterface
+interface HtmlFragmentInterface extends StyleContainerInterface, ScriptContainerInterface, ContentElementInterface
 {
 
 }

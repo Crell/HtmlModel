@@ -16,6 +16,7 @@ class HtmlPage implements HtmlPageInterface, Linkable
     use StyleContainerTrait;
     use ScriptContainerTrait;
     use StatusCodeContainerTrait;
+    use HeadElementContainerTrait;
 
     /**
      * Attributes for the HTML element.
@@ -30,16 +31,6 @@ class HtmlPage implements HtmlPageInterface, Linkable
      * @var AttributeBag
      */
     private $bodyAttributes;
-
-
-    /**
-     * All of the Header elements for this page.
-     *
-     * This excludes those head elements that have their own properties.
-     *
-     * @var HeadElement[]
-     */
-    private $headElements = [];
 
     /**
      * The base element for this page, if any.
@@ -134,24 +125,6 @@ class HtmlPage implements HtmlPageInterface, Linkable
     /**
      * {@inheritDoc}
      */
-    public function withHeadElement(HeadElement $element)
-    {
-        $that = clone($this);
-        $that->headElements[] = $element;
-        return $that;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    public function getHeadElements()
-    {
-        return $this->headElements;
-    }
-
-    /**
-     * {@inheritDoc}
-     */
     public function getTitle()
     {
         return $this->title;
@@ -172,7 +145,7 @@ class HtmlPage implements HtmlPageInterface, Linkable
      */
     public function getLinks()
     {
-        return array_merge($this->getStyleLinks(), array_filter($this->headElements, function(HeadElement $element) {
+        return array_merge($this->getStyleLinks(), array_filter($this->getHeadElements(), function(HeadElement $element) {
             return $element instanceof LinkInterface;
         }));
     }
