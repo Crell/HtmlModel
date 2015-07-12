@@ -4,6 +4,7 @@ namespace Crell\HtmlModel\Test;
 
 use Crell\HtmlModel\Head\LinkElement;
 use Crell\HtmlModel\Head\MetaElement;
+use Crell\HtmlModel\Head\MetaRefreshElement;
 use Crell\HtmlModel\Head\StyleLinkElement;
 use Crell\HtmlModel\HtmlFragment;
 
@@ -15,7 +16,7 @@ class HtmlFragmentTest extends \PHPUnit_Framework_TestCase
 
         /** @var HtmlFragment $fragment */
         $fragment = $fragment
-          ->withHeadElement(new MetaElement('foo'))
+          ->withHeadElement(new MetaRefreshElement(3, 'http://www.google/com'))
           ->withHeadElement(new LinkElement('canonical', 'http://www.example.com/'))
           ->withStyleLink(new StyleLinkElement('css.css'))
         ;

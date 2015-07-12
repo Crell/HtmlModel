@@ -4,7 +4,7 @@ namespace Crell\HtmlModel\Test;
 
 use Crell\HtmlModel\Head\BaseElement;
 use Crell\HtmlModel\Head\LinkElement;
-use Crell\HtmlModel\Head\MetaElement;
+use Crell\HtmlModel\Head\MetaRefreshElement;
 use Crell\HtmlModel\Head\ScriptElement;
 use Crell\HtmlModel\Head\StyleElement;
 use Crell\HtmlModel\Head\StyleLinkElement;
@@ -68,7 +68,7 @@ class HtmlPageTest extends \PHPUnit_Framework_TestCase
         $html = $html
             ->withTitle('Test page')
             ->withBase(new BaseElement('http://www.example.com/'))
-            ->withHeadElement(new MetaElement('foo'))
+            ->withHeadElement(new MetaRefreshElement(3, 'http://www.google.com'))
             ->withHeadElement(new LinkElement('canonical', 'http://www.example.com/'))
             ->withScript(new ScriptElement('js.js'))
             ->withStyleLink(new StyleLinkElement('css.css'))
@@ -143,14 +143,14 @@ class HtmlPageTest extends \PHPUnit_Framework_TestCase
 
         /** @var HtmlPage $html */
         $html = $html
-          ->withHeadElement(new MetaElement('foo'))
+          ->withHeadElement(new MetaRefreshElement(3, 'http://www.google.com'))
           ->withHeadElement(new LinkElement('canonical', 'http://www.example.com/'))
         ;
 
         $head_elements = $html->getHeadElements();
         $this->assertCount(2, $head_elements);
         $this->assertInstanceOf('\Crell\HtmlModel\Head\MetaElement', $head_elements[0]);
-        $this->assertEquals('foo', $head_elements[0]->getAttribute('content'));
+        $this->assertEquals('3;url=http://www.google.com', $head_elements[0]->getAttribute('content'));
         $this->assertInstanceOf('\Crell\HtmlModel\Head\LinkElement', $head_elements[1]);
         $this->assertEquals('canonical', $head_elements[1]->getRel());
         $this->assertEquals('http://www.example.com/', $head_elements[1]->getHref());
@@ -162,7 +162,7 @@ class HtmlPageTest extends \PHPUnit_Framework_TestCase
 
         /** @var HtmlPage $html */
         $html = $html
-          ->withHeadElement(new MetaElement('foo'))
+          ->withHeadElement(new MetaRefreshElement(3, 'http://www.google.com'))
           ->withHeadElement(new LinkElement('canonical', 'http://www.example.com/'))
           ->withStyleLink(new StyleLinkElement('css.css'))
         ;
@@ -183,7 +183,7 @@ class HtmlPageTest extends \PHPUnit_Framework_TestCase
           ->withHtmlAttribute('manifest', 'example.appcache')
           ->withBodyAttribute('foo', 'bar')
           ->withBase(new BaseElement('http://www.example.com/'))
-          ->withHeadElement(new MetaElement('foo'))
+          ->withHeadElement(new MetaRefreshElement(3, 'http://www.google.com'))
           ->withHeadElement(new LinkElement('canonical', 'http://www.example.com/'))
           ->withScript(new ScriptElement('header.js'))
           ->withScript(new ScriptElement('footer.js'), 'footer')
@@ -199,7 +199,7 @@ class HtmlPageTest extends \PHPUnit_Framework_TestCase
 <head>
 <title>Test page</title>
 <base href="http://www.example.com/" />
-<meta content="foo" />
+<meta http-equiv="refresh" content="3;url=http://www.google.com" />
 <link rel="canonical" href="http://www.example.com/" />
 <link type="text/css" rel="stylesheet" href="css.css" />
 <style type="text/css">

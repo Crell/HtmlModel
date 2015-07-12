@@ -3,7 +3,7 @@
 namespace Crell\HtmlModel\Test\MetadataTransferer;
 
 use Crell\HtmlModel\Head\LinkElement;
-use Crell\HtmlModel\Head\MetaElement;
+use Crell\HtmlModel\Head\MetaRefreshElement;
 use Crell\HtmlModel\HtmlFragment;
 use Crell\HtmlModel\MetadataTransfer\HeadElementTransferer;
 
@@ -19,7 +19,7 @@ class HeadElementTransfererTest extends \PHPUnit_Framework_TestCase
         $dest = new HtmlFragment();
 
         $src = $src
-          ->withHeadElement(new MetaElement('foo'))
+          ->withHeadElement(new MetaRefreshElement(3, 'http://www.google.com'))
           ->withHeadElement(new LinkElement('canonical', 'http://www.example.com/'))
         ;
 
@@ -30,7 +30,7 @@ class HeadElementTransfererTest extends \PHPUnit_Framework_TestCase
         $head_elements = $dest->getHeadElements();
         $this->assertCount(2, $head_elements);
         $this->assertInstanceOf('\Crell\HtmlModel\Head\MetaElement', $head_elements[0]);
-        $this->assertEquals('foo', $head_elements[0]->getAttribute('content'));
+        $this->assertEquals('3;url=http://www.google.com', $head_elements[0]->getAttribute('content'));
         $this->assertInstanceOf('\Crell\HtmlModel\Head\LinkElement', $head_elements[1]);
         $this->assertEquals('canonical', $head_elements[1]->getRel());
         $this->assertEquals('http://www.example.com/', $head_elements[1]->getHref());

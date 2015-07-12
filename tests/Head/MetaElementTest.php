@@ -8,11 +8,25 @@ class MetaElementTest extends \PHPUnit_Framework_TestCase
 {
     public function testConstructor()
     {
-        $meta = new MetaElement('content here', [
-            'http-equiv' => 'test',
+        $meta = new MetaElement([
+            'content' => 'content here',
+            'http-equiv' => 'refresh',
         ]);
 
         $this->assertEquals('content here', $meta->getAttribute('content'));
-        $this->assertEquals('test', $meta->getAttribute('http-equiv'));
+        $this->assertEquals('refresh', $meta->getAttribute('http-equiv'));
+    }
+
+    public function testHttpEquiv()
+    {
+        $meta = new MetaElement();
+
+        /** @var MetaElement $meta */
+        $meta = $meta
+          ->withAttribute('http-equiv', 'refresh')
+          ->withAttribute('content', '3;url=http://www.google.com');
+
+        $this->assertEquals('3;url=http://www.google.com', $meta->getAttribute('content'));
+        $this->assertEquals('refresh', $meta->getAttribute('http-equiv'));
     }
 }
