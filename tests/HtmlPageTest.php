@@ -201,7 +201,7 @@ class HtmlPageTest extends \PHPUnit_Framework_TestCase
 <base href="http://www.example.com/" />
 <meta content="foo" />
 <link rel="canonical" href="http://www.example.com/" />
-<link rel="stylesheet" href="css.css" />
+<link type="text/css" rel="stylesheet" href="css.css" />
 <style type="text/css">
 CSS here
 </style>

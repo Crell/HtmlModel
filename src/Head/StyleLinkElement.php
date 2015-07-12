@@ -10,6 +10,7 @@ class StyleLinkElement extends LinkElement
      */
     public function __construct($href)
     {
-        parent::__construct('stylesheet', $href);
+        $attributes['type'] = 'text/css';
+        parent::__construct('stylesheet', $href, $attributes);
     }
 }
