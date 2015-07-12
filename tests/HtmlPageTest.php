@@ -98,13 +98,16 @@ class HtmlPageTest extends \PHPUnit_Framework_TestCase
         /** @var HtmlPage $html */
         $html = $html
           ->withScript(new ScriptElement('js.js'))
+          ->withScript(new ScriptElement('footer.js'), 'footer')
           ->withScript($inline_script);
 
         $scripts = $html->getScripts();
-
         $this->assertCount(2, $scripts);
         $this->assertEquals('js.js', $scripts[0]->getAttribute('src'));
         $this->assertEquals('Some JS here', $scripts[1]->getContent());
+        $scripts = $html->getScripts('footer');
+        $this->assertCount(1, $scripts);
+        $this->assertEquals('footer.js', $scripts[0]->getAttribute('src'));
     }
 
     public function testStyleLinks()
