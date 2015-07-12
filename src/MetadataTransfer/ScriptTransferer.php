@@ -4,6 +4,9 @@ namespace Crell\HtmlModel\MetadataTransfer;
 
 use Crell\HtmlModel\ScriptContainerInterface;
 
+/**
+ * Transferer for ScriptElement objects.
+ */
 class ScriptTransferer implements MetadataTransfererInterface
 {
     /**

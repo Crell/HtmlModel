@@ -4,6 +4,9 @@ namespace Crell\HtmlModel\MetadataTransfer;
 
 use Crell\HtmlModel\StyleContainerInterface;
 
+/**
+ * Transferer for StyleElement objects.
+ */
 class StyleTransferer implements MetadataTransfererInterface
 {
     /**

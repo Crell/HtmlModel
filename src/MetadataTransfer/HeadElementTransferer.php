@@ -5,6 +5,9 @@ namespace Crell\HtmlModel\MetadataTransfer;
 
 use Crell\HtmlModel\HeadElementContainerInterface;
 
+/**
+ * Transferer for HeadElement objects.
+ */
 class HeadElementTransferer implements MetadataTransfererInterface
 {
     /**

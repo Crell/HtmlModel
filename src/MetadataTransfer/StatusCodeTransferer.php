@@ -5,6 +5,9 @@ namespace Crell\HtmlModel\MetadataTransfer;
 
 use Crell\HtmlModel\StatusCodeContainerInterface;
 
+/**
+ * Transferer for objects that track a status code.
+ */
 class StatusCodeTransferer implements MetadataTransfererInterface
 {
     /**
