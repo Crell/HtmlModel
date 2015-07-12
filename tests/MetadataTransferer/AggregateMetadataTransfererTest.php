@@ -2,13 +2,19 @@
 
 namespace Crell\HtmlModel\Test\MetadataTransferer;
 
+use Crell\HtmlModel\Head\LinkElement;
+use Crell\HtmlModel\Head\MetaElement;
 use Crell\HtmlModel\Head\ScriptElement;
 use Crell\HtmlModel\Head\StyleElement;
 use Crell\HtmlModel\Head\StyleLinkElement;
 use Crell\HtmlModel\HtmlFragment;
+use Crell\HtmlModel\HtmlPage;
+use Crell\HtmlModel\HtmlPageInterface;
 use Crell\HtmlModel\MetadataTransfer\AggregateMetadataTransferer;
-use Crell\HtmlModel\ScriptContainerInterface;
-use Crell\HtmlModel\StyleContainerInterface;
+use Crell\HtmlModel\MetadataTransfer\HeadElementTransferer;
+use Crell\HtmlModel\MetadataTransfer\ScriptTransferer;
+use Crell\HtmlModel\MetadataTransfer\StatusCodeTransferer;
+use Crell\HtmlModel\MetadataTransfer\StyleTransferer;
 use Prophecy\Argument;
 
 class AggregateMetadataTransfererTest extends \PHPUnit_Framework_TestCase
@@ -62,4 +68,71 @@ class AggregateMetadataTransfererTest extends \PHPUnit_Framework_TestCase
         $transferer->transfer($src, $dest);
     }
 
+
+    public function testDifferentDestinationClass()
+    {
+        $src = new HtmlFragment();
+
+        $inline_script = new ScriptElement();
+        $inline_script = $inline_script->withContent('Some JS here');
+
+        /** @var HtmlFragment $src */
+        $src = $src
+          ->withHeadElement(new MetaElement('foo'))
+          ->withHeadElement(new LinkElement('canonical', 'http://www.example.com/'))
+          ->withScript(new ScriptElement('js.js'))
+          ->withScript(new ScriptElement('footer.js'), 'footer')
+          ->withScript($inline_script)
+          ->withStyleLink(new StyleLinkElement('css.css'))
+          ->withInlineStyle(new StyleElement('CSS here'))
+          ->withContent('Body here')
+        ;
+
+        $dest = new HtmlPage();
+
+        $transferer = new AggregateMetadataTransferer([
+          'Crell\HtmlModel\StyleContainerInterface' => new StyleTransferer(),
+          'Crell\HtmlModel\ScriptContainerInterface' => new ScriptTransferer(),
+          'Crell\HtmlModel\StatusCodeContainerInterface' => new StatusCodeTransferer(),
+          'Crell\HtmlModel\HeadElementContainerInterface' => new HeadElementTransferer(),
+        ]);
+
+        /** @var HtmlPageInterface $html */
+        $html = $transferer->transfer($src, $dest);
+        $this->assertInstanceOf('Crell\HtmlModel\HtmlPage', $html);
+
+        // Check links.
+        $links = $html->getLinks();
+        $this->assertCount(2, $links);
+        $this->assertInstanceOf('\Crell\HtmlModel\Head\StyleLinkElement', $links[0]);
+        $this->assertInstanceOf('\Crell\HtmlModel\Head\LinkElement', $links[1]);
+
+        // Check Head elements generally.
+        $head_elements = $html->getHeadElements();
+        $this->assertCount(2, $head_elements);
+        $this->assertInstanceOf('\Crell\HtmlModel\Head\MetaElement', $head_elements[0]);
+        $this->assertEquals('foo', $head_elements[0]->getAttribute('content'));
+        $this->assertInstanceOf('\Crell\HtmlModel\Head\LinkElement', $head_elements[1]);
+        $this->assertEquals('canonical', $head_elements[1]->getRel());
+        $this->assertEquals('http://www.example.com/', $head_elements[1]->getHref());
+
+        // Check Inline styles.
+        $inline_styles = $html->getInlineStyles();
+        $this->assertCount(1, $inline_styles);
+        $this->assertEquals('CSS here', $inline_styles[0]->getContent());
+
+        // Check Style Links.
+        $style_links = $html->getStyleLinks();
+        $this->assertCount(1, $style_links);
+        $this->assertEquals('css.css', $style_links[0]->getAttribute('href'));
+
+        // Check scripts.
+        $scripts = $html->getScripts();
+        $this->assertCount(2, $scripts);
+        $this->assertEquals('js.js', $scripts[0]->getAttribute('src'));
+        $this->assertEquals('Some JS here', $scripts[1]->getContent());
+        $scripts = $html->getScripts('footer');
+        $this->assertCount(1, $scripts);
+        $this->assertEquals('footer.js', $scripts[0]->getAttribute('src'));
+    }
 }
