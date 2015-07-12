@@ -6,7 +6,6 @@ use Crell\HtmlModel\Head\BaseElement;
 
 class BaseElementTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testConstructor()
     {
         $base = new BaseElement('http://www.example.com/', '_blank');
@@ -27,5 +26,4 @@ class BaseElementTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('http://www.example2.com/', $base2->getAttribute('href'));
         $this->assertEquals('_blank', $base2->getAttribute('target'));
     }
-
 }

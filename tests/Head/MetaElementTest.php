@@ -2,11 +2,10 @@
 
 namespace Crell\HtmlModel\Test\Head;
 
-
 use Crell\HtmlModel\Head\MetaElement;
 
-class MetaElementTest extends \PHPUnit_Framework_TestCase {
-
+class MetaElementTest extends \PHPUnit_Framework_TestCase
+{
     public function testConstructor()
     {
         $meta = new MetaElement('content here', [

@@ -6,7 +6,6 @@ use Crell\HtmlModel\StatusCodeContainerTrait;
 
 class StatusCodeContainerTraitTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testStatusCode()
     {
         /** @var StatusCodeContainerTrait $status */

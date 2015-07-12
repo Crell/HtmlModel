@@ -19,7 +19,6 @@ use Prophecy\Argument;
 
 class AggregateMetadataTransfererTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testAggregateHandoff()
     {
         $sub1 = $this->prophesize('Crell\HtmlModel\MetadataTransfer\StyleTransferer');

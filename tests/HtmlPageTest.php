@@ -2,7 +2,6 @@
 
 namespace Crell\HtmlModel\Test;
 
-
 use Crell\HtmlModel\Head\BaseElement;
 use Crell\HtmlModel\Head\LinkElement;
 use Crell\HtmlModel\Head\MetaElement;

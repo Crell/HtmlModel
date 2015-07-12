@@ -2,7 +2,6 @@
 
 namespace Crell\HtmlModel\Test\Head;
 
-
 use Crell\HtmlModel\Head\StyleLinkElement;
 
 class StyleLinkElementTest extends \PHPUnit_Framework_TestCase
@@ -14,5 +13,4 @@ class StyleLinkElementTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('stylesheet', $link->getRel());
         $this->assertEquals('styles.css', $link->getHref());
     }
-
 }

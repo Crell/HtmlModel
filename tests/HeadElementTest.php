@@ -7,7 +7,6 @@ use Crell\HtmlModel\Head\StyleElement;
 
 class HeadElementTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * Test that true does in fact equal true
      */

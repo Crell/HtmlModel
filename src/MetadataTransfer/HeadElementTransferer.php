@@ -2,7 +2,6 @@
 
 namespace Crell\HtmlModel\MetadataTransfer;
 
-
 use Crell\HtmlModel\HeadElementContainerInterface;
 
 /**

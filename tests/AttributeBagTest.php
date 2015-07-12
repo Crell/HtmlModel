@@ -6,7 +6,6 @@ use Crell\HtmlModel\AttributeBag;
 
 class AttributeBagTest extends \PHPUnit_Framework_TestCase
 {
-
     /**
      * Confirms that setting values from the constructor works.
      */
@@ -50,7 +49,7 @@ class AttributeBagTest extends \PHPUnit_Framework_TestCase
         $bag = $bag
           ->withAttribute('normal', 'value')
           ->withAttribute('forreals', true)
-          ->withAttribute('list', ['a','b', 'c'])
+          ->withAttribute('list', ['a', 'b', 'c'])
           ->withAttribute('empty', '')
           ->withAttribute('nope', false);
 
@@ -74,7 +73,7 @@ class AttributeBagTest extends \PHPUnit_Framework_TestCase
         // Note this order is different than the constructor order, but constructor
         // order should win.
         $bag = $bag
-          ->withAttribute('list', ['a','b', 'c'])
+          ->withAttribute('list', ['a', 'b', 'c'])
           ->withAttribute('forreals', true)
           ->withAttribute('empty', '')
           ->withAttribute('nope', false)

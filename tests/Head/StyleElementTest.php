@@ -2,12 +2,10 @@
 
 namespace Crell\HtmlModel\Test\Head;
 
-
 use Crell\HtmlModel\Head\StyleElement;
 
 class StyleElementTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testConstructor()
     {
         $style = new StyleElement('CSS goes here');
@@ -39,5 +37,4 @@ class StyleElementTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($rendered, (string)$style);
     }
-
 }

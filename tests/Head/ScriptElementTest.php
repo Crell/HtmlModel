@@ -2,12 +2,10 @@
 
 namespace Crell\HtmlModel\Test\Head;
 
-
 use Crell\HtmlModel\Head\ScriptElement;
 
 class ScriptElementTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testConstrutor()
     {
         $script = new ScriptElement('js.js');
@@ -25,5 +23,4 @@ class ScriptElementTest extends \PHPUnit_Framework_TestCase
 
         $this->assertEquals($expected, (string)$script);
     }
-
 }

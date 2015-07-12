@@ -62,5 +62,4 @@ class AggregateMetadataTransferer implements MetadataTransfererInterface
 
         return $dest;
     }
-
 }

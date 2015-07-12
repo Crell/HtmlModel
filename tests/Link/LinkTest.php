@@ -6,7 +6,6 @@ use Crell\HtmlModel\Link\Link;
 
 class LinkTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testConstructor()
     {
         $link = new Link('canonical', 'http://www.example.com/');

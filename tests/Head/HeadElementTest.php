@@ -2,12 +2,10 @@
 
 namespace Crell\HtmlModel\Test\Head;
 
-
 use Crell\HtmlModel\Head\HeadElement;
 
 class HeadElementTest extends \PHPUnit_Framework_TestCase
 {
-
     public function testAttributes()
     {
         $head = new HeadElement();
