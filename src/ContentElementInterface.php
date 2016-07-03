@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: crell
- * Date: 6/21/15
- * Time: 11:13 PM
- */
 
 namespace Crell\HtmlModel;
 
