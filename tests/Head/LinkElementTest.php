@@ -10,7 +10,7 @@ class LinkElementTest extends \PHPUnit_Framework_TestCase
     {
         $link = new LinkElement('up', 'http://www.example.com/');
 
-        $this->assertEquals('up', $link->getRel());
+        $this->assertEquals(['up'], $link->getRels());
         $this->assertEquals('http://www.example.com/', $link->getHref());
     }
 
@@ -19,7 +19,7 @@ class LinkElementTest extends \PHPUnit_Framework_TestCase
         $link = new LinkElement('up', 'http://www.example.com/');
         $link = $link->withAttribute('crossorigin', 'anonymous');
 
-        $this->assertEquals('up', $link->getRel());
+        $this->assertEquals(['up'], $link->getRels());
         $this->assertEquals('http://www.example.com/', $link->getHref());
         $this->assertEquals('anonymous', $link->getAttribute('crossorigin'));
 

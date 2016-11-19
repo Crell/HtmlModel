@@ -112,7 +112,7 @@ class AggregateMetadataTransfererTest extends \PHPUnit_Framework_TestCase
         $this->assertInstanceOf('\Crell\HtmlModel\Head\MetaElement', $head_elements[0]);
         $this->assertEquals('3;url=http://www.google.com', $head_elements[0]->getAttribute('content'));
         $this->assertInstanceOf('\Crell\HtmlModel\Head\LinkElement', $head_elements[1]);
-        $this->assertEquals('canonical', $head_elements[1]->getRel());
+        $this->assertEquals(['canonical'], $head_elements[1]->getRels());
         $this->assertEquals('http://www.example.com/', $head_elements[1]->getHref());
 
         // Check Inline styles.

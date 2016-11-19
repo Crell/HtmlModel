@@ -2,22 +2,22 @@
 
 namespace Crell\HtmlModel\Head;
 
-use Crell\HtmlModel\Link\LinkInterface;
-use Crell\HtmlModel\Link\LinkModifiersTrait;
-use Crell\HtmlModel\Link\ModifiableLinkInterface;
+use Psr\Link\EvolvableLinkInterface;
 
-class LinkElement extends HeadElement implements LinkInterface, ModifiableLinkInterface
+class LinkElement extends HeadElement implements EvolvableLinkInterface
 {
-    use LinkModifiersTrait;
+//    use EvolvableLinkTrait;
 
     protected $element = 'link';
 
     public function __construct($rel, $href, array $attributes = [])
     {
+        parent::__construct();
+
         // @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/link
         // for a full description of all attributes.
         $defaults = [
-          'rel' => $rel,
+          'rel' => [$rel],
           'href' => $href,
           'title' => '',       // Title string, usually used to describe an alternate stylesheet link.
           'hreflang' => '',    // This attribute indicates the language of the linked resource. It is purely advisory.
@@ -43,9 +43,44 @@ class LinkElement extends HeadElement implements LinkInterface, ModifiableLinkIn
     /**
      * {@inheritdoc}
      */
-    public function getRel()
+    public function getRels()
     {
         return $this->getAttribute('rel');
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function withHref($href)
+    {
+        return $this->withAttribute('href', $href);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function withRel($rel)
+    {
+        return $this->withAttribute('rel', array_merge($this->getAttribute('rel'), [$rel]));
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function withoutRel($rel)
+    {
+        $rels = $this->getAttribute('rel');
+        $rels = array_diff($rels, [$rel]);
+        return $this->withAttribute('rel', $rels);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function isTemplated()
+    {
+        // HTML links are never templated.
+        return false;
     }
 
     /**

@@ -4,19 +4,21 @@ namespace Crell\HtmlModel;
 
 use Crell\HtmlModel\Head\BaseElement;
 use Crell\HtmlModel\Head\HeadElement;
-use Crell\HtmlModel\Link\Linkable;
-use Crell\HtmlModel\Link\LinkInterface;
+use Fig\Link\EvolvableLinkProviderTrait;
+use Psr\Link\EvolvableLinkProviderInterface;
+use Psr\Link\LinkInterface;
 
 /**
  * Value object representing an entire HTML page.
  */
-class HtmlPage implements HtmlPageInterface, Linkable
+class HtmlPage implements HtmlPageInterface, EvolvableLinkProviderInterface
 {
     use ContentElementTrait;
     use StyleContainerTrait;
     use ScriptContainerTrait;
     use StatusCodeContainerTrait;
     use HeadElementContainerTrait;
+    use EvolvableLinkProviderTrait;
 
     /**
      * Attributes for the HTML element.

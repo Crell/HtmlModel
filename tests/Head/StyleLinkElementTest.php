@@ -10,7 +10,7 @@ class StyleLinkElementTest extends \PHPUnit_Framework_TestCase
     {
         $link = new StyleLinkElement('styles.css');
 
-        $this->assertEquals('stylesheet', $link->getRel());
+        $this->assertEquals(['stylesheet'], $link->getRels());
         $this->assertEquals('styles.css', $link->getHref());
     }
 }

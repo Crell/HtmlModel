@@ -3,8 +3,9 @@
 namespace Crell\HtmlModel;
 
 use Crell\HtmlModel\Head\HeadElement;
-use Crell\HtmlModel\Link\Linkable;
-use Crell\HtmlModel\Link\LinkInterface;
+use Fig\Link\EvolvableLinkProviderTrait;
+use Psr\Link\EvolvableLinkProviderInterface;
+use Psr\Link\LinkInterface;
 
 /**
  * Value object representing a portion of an HTML page.
@@ -14,12 +15,13 @@ use Crell\HtmlModel\Link\LinkInterface;
  * but also associated metadata, like what style elements are necessary for
  * that markup.
  */
-class HtmlFragment implements HtmlFragmentInterface, Linkable
+class HtmlFragment implements HtmlFragmentInterface, EvolvableLinkProviderInterface
 {
     use ContentElementTrait;
     use StyleContainerTrait;
     use ScriptContainerTrait;
     use HeadElementContainerTrait;
+    use EvolvableLinkProviderTrait;
 
     /**
      * {@inheritdoc}
