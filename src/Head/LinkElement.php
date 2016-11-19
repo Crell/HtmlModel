@@ -71,7 +71,7 @@ class LinkElement extends HeadElement implements EvolvableLinkInterface
     {
         $rels = $this->getAttribute('rel');
         $rels = array_diff($rels, [$rel]);
-        return $this->withAttribute('rel', $rels);
+        return $this->withAttribute('rel', array_values($rels));
     }
 
     /**
