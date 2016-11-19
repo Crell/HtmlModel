@@ -12,12 +12,8 @@ would be silly), but just the key aspects of it.  In a sense, it seeks to provid
 an HTML equivalent of RESTful domain models such as HAL or Atom.
 
 Inspired by PSR-7, all objects are immutable.  They may be maniplated with with*()
-methods, which return new value object instances.  The Link handling is inspired
-by discussions with Evert Pot and Matthew O'Phinney, and in particular this
-research by Evert Pot: http://evertpot.com/whats-in-a-link/.
-
-Hopefully at some point in the future LinkInterface will become a FIG recommendation,
-at which point the interfaces here will be removed in favor of the FIG standard.
+methods, which return new value object instances.  Link handling is based on the PSR-13
+hyperlink specification.
 
 This approach was inspired by, and evolved from, similar code that exited in
 Drupal 8 during development but was later removed.
