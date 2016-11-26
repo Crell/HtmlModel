@@ -30,8 +30,82 @@ $ composer require crell/htmlmodel
 
 ## Usage
 
-``` php
+If you've used a PSR-7 Request or Response object, HtmlModel should be quite similar. Most of the time you'll be interacting with either an HtmlFragment or an HtmlPage.
 
+``` php
+// Create an HtmlFragment object.
+$fragment = new HtmlFragment();
+
+// Set the fragment body, which is simply an arbitrary HTML string.
+$fragment = $fragment->withContent('<aside>Immutable objects are easier than you think.</aside>');
+
+// Populate its metadata; the metadata won't be rendered with this
+// fragment but can be transferred to an aggregating page, or a JSON
+// instruction in response to an Ajax call.
+$fragment = $fragment
+  ->withHeadElement(new MetaRefreshElement(3, 'http://www.google/com'))
+  ->withHeadElement(new LinkElement('canonical', 'http://www.example.com/'))
+  ->withStyleLink(new StyleLinkElement('css.css'))
+;
+```
+
+```php
+// Create an HtmlPage object.
+$html = new HtmlPage();
+
+// Populate it with various elements and body contents.
+$html = $html
+  ->withTitle('Test page')
+  ->withHtmlAttribute('manifest', 'example.appcache')
+  ->withBodyAttribute('foo', 'bar')
+  ->withBase(new BaseElement('http://www.example.com/'))
+  ->withHeadElement(new MetaRefreshElement(3, 'http://www.google.com'))
+  ->withHeadElement(new LinkElement('canonical', 'http://www.example.com/'))
+  ->withScript(new ScriptElement('header.js'))
+  ->withScript(new ScriptElement('footer.js'), 'footer')
+  ->withStyleLink(new StyleLinkElement('css.css'))
+  ->withInlineStyle(new StyleElement('CSS here'))
+  ->withContent('Body here')
+;
+
+// Simply casting the page object to a string will produce the corresponding markup.
+$output = (string)$html;
+```
+
+The HtmlPage can even contain an HTTP status code.  Although it won't get rendered it can be transferred to a Response object, allowing the page creator to specify the type of response through a straightforward domain object.
+
+The cool part, though, is when you can aggregate multiple fragments into a page cleanly.  That lets you build multiple portions of a page in parallel, even asynchronously, even caching some portions of the page but not others, and then fold them together into a single page.
+
+```php
+
+// Create an HtmlFragment (or return one from some lower-level routine)
+$src = new HtmlFragment();
+$src = $src
+  ->withHeadElement(new MetaRefreshElement(3, 'http://www.google.com'))
+  ->withHeadElement(new LinkElement('canonical', 'http://www.example.com/'))
+  ->withScript(new ScriptElement('js.js'))
+  ->withScript(new ScriptElement('footer.js'), 'footer')
+  ->withScript($inline_script)
+  ->withStyleLink(new StyleLinkElement('css.css'))
+  ->withInlineStyle(new StyleElement('CSS here'))
+  ->withContent('Body here')
+;
+
+// Now make an HtmlPage.
+$dest = new HtmlPage();
+
+// Now shuffle the metadata from the fragment to the page.
+
+$transferer = new AggregateMetadataTransferer([
+  StyleContainerInterface::class => new StyleTransferer(),
+  ScriptContainerInterface::class => new ScriptTransferer(),
+  StatusCodeContainerInterface::class => new StatusCodeTransferer(),
+  HeadElementContainerInterface::class => new HeadElementTransferer(),
+]);
+
+$html = $transferer->transfer($src, $dest);
+
+// Now take other fragments and transfer their metadata to the page, aggregating them together!
 ```
 
 ## Change log
