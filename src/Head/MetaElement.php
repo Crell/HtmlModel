@@ -65,7 +65,7 @@ class MetaElement extends HeadElement
      * @return bool
      *   True if the http-equiv value is legal, false otherwise.
      */
-    protected function validateHttpEquiv($value)
+    public function validateHttpEquiv($value)
     {
         return in_array($value, ['Content-Security-Policy', 'default-style', 'refresh']);
     }
