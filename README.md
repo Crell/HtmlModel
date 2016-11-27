@@ -2,7 +2,7 @@
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/crell/htmlmodel.svg?style=flat-square)](https://packagist.org/packages/crell/htmlmodel)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Build Status](https://travis-ci.org/Crell/HtmlModel.svg)](https://travis-ci.org/Crell/HtmlModel)
+[![Build Status](https://travis-ci.org/Crell/HtmlModel.svg?branch=master)](https://travis-ci.org/Crell/HtmlModel.svg?branch=master)
 [![Code Climate](https://codeclimate.com/github/Crell/HtmlModel/badges/gpa.svg)](https://codeclimate.com/github/Crell/HtmlModel)
 [![Total Downloads](https://img.shields.io/packagist/dt/crell/htmlmodel.svg?style=flat-square)](https://packagist.org/packages/crell/htmlmodel)
 
@@ -17,8 +17,6 @@ hyperlink specification.
 
 This approach was inspired by, and evolved from, similar code that exited in
 Drupal 8 during development but was later removed.
-
-This package is still very much an early Work-In-Progress.
 
 ## Install
 
