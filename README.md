@@ -130,4 +130,4 @@ If you discover any security related issues, please email the author instead of 
 
 ## License
 
-The MIT License (MIT). Please see [License File](LICENSE.md) for more information.
+The LGPL License, version 3 or, at your option, any later version. Please see [License File](LICENSE.md) for more information.
