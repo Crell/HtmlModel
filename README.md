@@ -6,17 +6,11 @@
 [![Code Climate](https://codeclimate.com/github/Crell/HtmlModel/badges/gpa.svg)](https://codeclimate.com/github/Crell/HtmlModel)
 [![Total Downloads](https://img.shields.io/packagist/dt/crell/htmlmodel.svg?style=flat-square)](https://packagist.org/packages/crell/htmlmodel)
 
-HtmlModel is exactly what it sounds like.  It is a series of value objects intended
-to model an HTML page.  It does not attempt to model every element in HTML (that 
-would be silly), but just the key aspects of it.  In a sense, it seeks to provide
-an HTML equivalent of RESTful domain models such as HAL or Atom.
+HtmlModel is exactly what it sounds like.  It is a series of value objects intended to model an HTML page.  It does not attempt to model every element in HTML (that would be silly), but just the key aspects of it.  In a sense, it seeks to provide an HTML equivalent of RESTful domain models such as HAL or Atom.
 
-Inspired by PSR-7, all objects are immutable.  They may be maniplated with with*()
-methods, which return new value object instances.  Link handling is based on the PSR-13
-hyperlink specification.
+Inspired by PSR-7, all objects are immutable.  They may be manipulated with with*() methods, which return new value object instances.  Link handling uses the PSR-13 hyperlink specification.
 
-This approach was inspired by, and evolved from, similar code that exited in
-Drupal 8 during development but was later removed.
+This approach was inspired by, and evolved from, similar code that exited in Drupal 8 during development but was later removed.
 
 ## Install
 
