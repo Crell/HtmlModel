@@ -5,7 +5,7 @@
         "HTML"
     ],
     "homepage": "https://github.com/Crell/HtmlModel",
-    "license": "LGPLv3+",
+    "license": "LGPL-3.0-or-later",
     "authors": [
         {
             "name": "Larry Garfield",
