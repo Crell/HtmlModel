@@ -3,8 +3,9 @@
 namespace Crell\HtmlModel\Test\Link;
 
 use Fig\Link\Link;
+use PHPUnit\Framework\TestCase;
 
-class LinkTest extends \PHPUnit_Framework_TestCase
+class LinkTest extends TestCase
 {
     public function testConstructor()
     {

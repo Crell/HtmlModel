@@ -6,8 +6,9 @@ use Crell\HtmlModel\Head\StyleElement;
 use Crell\HtmlModel\Head\StyleLinkElement;
 use Crell\HtmlModel\HtmlFragment;
 use Crell\HtmlModel\MetadataTransfer\StyleTransferer;
+use PHPUnit\Framework\TestCase;
 
-class StyleTransfererTest extends \PHPUnit_Framework_TestCase
+class StyleTransfererTest extends TestCase
 {
     public function testTransferStyles()
     {

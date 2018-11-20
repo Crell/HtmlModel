@@ -6,8 +6,9 @@ use Crell\HtmlModel\Head\LinkElement;
 use Crell\HtmlModel\Head\MetaRefreshElement;
 use Crell\HtmlModel\HtmlFragment;
 use Crell\HtmlModel\MetadataTransfer\HeadElementTransferer;
+use PHPUnit\Framework\TestCase;
 
-class HeadElementTransfererTest extends \PHPUnit_Framework_TestCase
+class HeadElementTransfererTest extends TestCase
 {
     public function testTransferStyles()
     {

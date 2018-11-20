@@ -5,8 +5,9 @@ namespace Crell\HtmlModel\Test\MetadataTransferer;
 use Crell\HtmlModel\HtmlFragment;
 use Crell\HtmlModel\Head\ScriptElement;
 use Crell\HtmlModel\MetadataTransfer\ScriptTransferer;
+use PHPUnit\Framework\TestCase;
 
-class ScriptTransfererTest extends \PHPUnit_Framework_TestCase
+class ScriptTransfererTest extends TestCase
 {
     public function testTransferScripts()
     {

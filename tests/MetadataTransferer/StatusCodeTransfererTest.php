@@ -4,8 +4,9 @@ namespace Crell\HtmlModel\Test\MetadataTransferer;
 
 use Crell\HtmlModel\HtmlPage;
 use Crell\HtmlModel\MetadataTransfer\StatusCodeTransferer;
+use PHPUnit\Framework\TestCase;
 
-class StatusCodeTransfererTest extends \PHPUnit_Framework_TestCase
+class StatusCodeTransfererTest extends TestCase
 {
     public function testTransferStyles()
     {

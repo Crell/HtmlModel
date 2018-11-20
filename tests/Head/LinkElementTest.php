@@ -3,8 +3,9 @@
 namespace Crell\HtmlModel\Test\Head;
 
 use Crell\HtmlModel\Head\LinkElement;
+use PHPUnit\Framework\TestCase;
 
-class LinkElementTest extends \PHPUnit_Framework_TestCase
+class LinkElementTest extends TestCase
 {
     public function testConstructor()
     {

@@ -7,8 +7,9 @@ use Crell\HtmlModel\Head\MetaElement;
 use Crell\HtmlModel\Head\MetaRefreshElement;
 use Crell\HtmlModel\Head\StyleLinkElement;
 use Crell\HtmlModel\HtmlFragment;
+use PHPUnit\Framework\TestCase;
 
-class HtmlFragmentTest extends \PHPUnit_Framework_TestCase
+class HtmlFragmentTest extends TestCase
 {
     public function testLinks()
     {

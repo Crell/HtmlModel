@@ -20,9 +20,10 @@ use Crell\HtmlModel\MetadataTransfer\StyleTransferer;
 use Crell\HtmlModel\ScriptContainerInterface;
 use Crell\HtmlModel\StatusCodeContainerInterface;
 use Crell\HtmlModel\StyleContainerInterface;
+use PHPUnit\Framework\TestCase;
 use Prophecy\Argument;
 
-class AggregateMetadataTransfererTest extends \PHPUnit_Framework_TestCase
+class AggregateMetadataTransfererTest extends TestCase
 {
     public function testAggregateHandoff()
     {

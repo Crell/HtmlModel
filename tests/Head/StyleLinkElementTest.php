@@ -3,8 +3,9 @@
 namespace Crell\HtmlModel\Test\Head;
 
 use Crell\HtmlModel\Head\StyleLinkElement;
+use PHPUnit\Framework\TestCase;
 
-class StyleLinkElementTest extends \PHPUnit_Framework_TestCase
+class StyleLinkElementTest extends TestCase
 {
     public function testConstructor()
     {

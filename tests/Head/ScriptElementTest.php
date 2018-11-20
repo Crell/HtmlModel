@@ -3,8 +3,9 @@
 namespace Crell\HtmlModel\Test\Head;
 
 use Crell\HtmlModel\Head\ScriptElement;
+use PHPUnit\Framework\TestCase;
 
-class ScriptElementTest extends \PHPUnit_Framework_TestCase
+class ScriptElementTest extends TestCase
 {
     public function testConstrutor()
     {

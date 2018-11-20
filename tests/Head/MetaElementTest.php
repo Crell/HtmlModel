@@ -3,8 +3,9 @@
 namespace Crell\HtmlModel\Test\Head;
 
 use Crell\HtmlModel\Head\MetaElement;
+use PHPUnit\Framework\TestCase;
 
-class MetaElementTest extends \PHPUnit_Framework_TestCase
+class MetaElementTest extends TestCase
 {
     public function testConstructor()
     {

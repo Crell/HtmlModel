@@ -4,8 +4,9 @@
 namespace Crell\HtmlModel\Test\Head;
 
 use Crell\HtmlModel\Head\KeywordsMetaElement;
+use PHPUnit\Framework\TestCase;
 
-class KeywordsMetaElementTest extends \PHPUnit_Framework_TestCase
+class KeywordsMetaElementTest extends TestCase
 {
     public function testConstructor()
     {

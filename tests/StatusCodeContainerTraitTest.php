@@ -3,8 +3,9 @@
 namespace Crell\HtmlModel\Test;
 
 use Crell\HtmlModel\StatusCodeContainerTrait;
+use PHPUnit\Framework\TestCase;
 
-class StatusCodeContainerTraitTest extends \PHPUnit_Framework_TestCase
+class StatusCodeContainerTraitTest extends TestCase
 {
     public function testStatusCode()
     {

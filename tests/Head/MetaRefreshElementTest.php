@@ -3,8 +3,9 @@
 namespace Crell\HtmlModel\Test\Head;
 
 use Crell\HtmlModel\Head\MetaRefreshElement;
+use PHPUnit\Framework\TestCase;
 
-class MetaRefreshElementTest extends \PHPUnit_Framework_TestCase
+class MetaRefreshElementTest extends TestCase
 {
     public function testConstructor()
     {

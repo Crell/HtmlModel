@@ -3,8 +3,9 @@
 namespace Crell\HtmlModel\Test\Head;
 
 use Crell\HtmlModel\Head\StyleElement;
+use PHPUnit\Framework\TestCase;
 
-class StyleElementTest extends \PHPUnit_Framework_TestCase
+class StyleElementTest extends TestCase
 {
     public function testConstructor()
     {

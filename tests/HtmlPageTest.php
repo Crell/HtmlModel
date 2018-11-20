@@ -9,8 +9,9 @@ use Crell\HtmlModel\Head\ScriptElement;
 use Crell\HtmlModel\Head\StyleElement;
 use Crell\HtmlModel\Head\StyleLinkElement;
 use Crell\HtmlModel\HtmlPage;
+use PHPUnit\Framework\TestCase;
 
-class HtmlPageTest extends \PHPUnit_Framework_TestCase
+class HtmlPageTest extends TestCase
 {
     public function testConstructorContent()
     {
@@ -61,6 +62,9 @@ class HtmlPageTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('Test page', $html->getTitle());
     }
 
+    /**
+     * @doesNotPerformAssertions
+     */
     public function testAddingEverything()
     {
         $html = new HtmlPage();

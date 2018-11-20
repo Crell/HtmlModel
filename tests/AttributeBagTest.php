@@ -3,8 +3,9 @@
 namespace Crell\HtmlModel\Test;
 
 use Crell\HtmlModel\AttributeBag;
+use PHPUnit\Framework\TestCase;
 
-class AttributeBagTest extends \PHPUnit_Framework_TestCase
+class AttributeBagTest extends TestCase
 {
     /**
      * Confirms that setting values from the constructor works.

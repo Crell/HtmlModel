@@ -4,8 +4,9 @@ namespace Crell\HtmlModel\Test;
 
 use Crell\HtmlModel\Head\LinkElement;
 use Crell\HtmlModel\Head\StyleElement;
+use PHPUnit\Framework\TestCase;
 
-class HeadElementTest extends \PHPUnit_Framework_TestCase
+class HeadElementTest extends TestCase
 {
     /**
      * Test that true does in fact equal true

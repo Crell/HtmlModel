@@ -3,8 +3,9 @@
 namespace Crell\HtmlModel\Test\Head;
 
 use Crell\HtmlModel\Head\MetaCharsetElement;
+use PHPUnit\Framework\TestCase;
 
-class MetaCharsetElementTest extends \PHPUnit_Framework_TestCase
+class MetaCharsetElementTest extends TestCase
 {
     public function testConstructor()
     {
