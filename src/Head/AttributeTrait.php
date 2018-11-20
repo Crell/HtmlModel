@@ -39,7 +39,7 @@ trait AttributeTrait
     /**
      * Returns a copy of the element with the attribute removed.
      *
-     * @param $key
+     * @param string $key
      *   The offset to remove.
      * @return self
      */
@@ -54,13 +54,13 @@ trait AttributeTrait
     /**
      * Returns a single attribute.
      *
-     * @param $key
+     * @param string $key
      *   The attribute to return.
      * @return string|int|boolean|array
      *   The attribute, if it exists. Usually this is a string, but could also
      *   be an int, boolean, or array.
      */
-    public function getAttribute($key)
+    public function getAttribute(string $key)
     {
         return $this->attributes->get($key);
     }
@@ -74,7 +74,7 @@ trait AttributeTrait
      *
      * @return AttributeBag
      */
-    public function getAttributes()
+    public function getAttributes() : AttributeBag
     {
         return $this->attributes;
     }

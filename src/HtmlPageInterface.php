@@ -32,16 +32,16 @@ interface HtmlPageInterface extends ContentElementInterface, StatusCodeContainer
     /**
      * Returns the current base element of the page.
      *
-     * @return BaseElement
+     * @return ?BaseElement
      */
-    public function getBase();
+    public function getBase() : ?BaseElement;
 
     /**
      * Returns the HTML attributes for this HTML page.
      *
      * @return AttributeBag
      */
-    public function getHtmlAttributes();
+    public function getHtmlAttributes() : AttributeBag;
 
     /**
      * Returns a copy of the page with the HTML attribute set.
@@ -60,7 +60,7 @@ interface HtmlPageInterface extends ContentElementInterface, StatusCodeContainer
      *
      * @return AttributeBag
      */
-    public function getBodyAttributes();
+    public function getBodyAttributes() : AttributeBag;
 
     /**
      * Returns a copy of the page with the BODY attribute set.
@@ -80,7 +80,7 @@ interface HtmlPageInterface extends ContentElementInterface, StatusCodeContainer
      * @return string
      *   The title of the Page.
      */
-    public function getTitle();
+    public function getTitle() : string;
 
     /**
      * Returns a copy of the page with the title set.
@@ -107,5 +107,5 @@ interface HtmlPageInterface extends ContentElementInterface, StatusCodeContainer
      *
      * @return HeadElement[]
      */
-    public function getAllHeadElements();
+    public function getAllHeadElements() : array;
 }

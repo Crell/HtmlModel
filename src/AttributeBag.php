@@ -28,21 +28,21 @@ class AttributeBag implements \Countable
     }
 
     /**
-     * @param $offset
+     * @param string $offset
      *
      * @return bool
      */
-    public function has($offset)
+    public function has(string $offset) : bool
     {
         return isset($this->attributes[$offset]);
     }
 
     /**
-     * @param $offset
+     * @param string $offset
      *
-     * @return string
+     * @return string|array
      */
-    public function get($offset)
+    public function get(string $offset)
     {
         return isset($this->attributes[$offset]) ? $this->attributes[$offset] : '';
     }
@@ -58,7 +58,7 @@ class AttributeBag implements \Countable
      * @return self
      *
      */
-    public function withAttribute($offset, $value)
+    public function withAttribute(string $offset, $value) : self
     {
         if ($this->restricted) {
             if (!in_array($offset, array_keys($this->attributes))) {
@@ -75,7 +75,7 @@ class AttributeBag implements \Countable
     /**
      * {@inheritdoc}
      */
-    public function withoutAttribute($offset)
+    public function withoutAttribute(string $offset) : self
     {
         // If it's already not here, do nothing.
         if (!isset($this->attributes[$offset])) {
@@ -108,7 +108,7 @@ class AttributeBag implements \Countable
           : '';
     }
 
-    private function renderAttribute($key, $value)
+    private function renderAttribute(string $key, $value) : string
     {
         if (!$value) {
             return '';

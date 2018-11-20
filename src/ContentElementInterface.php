@@ -5,7 +5,7 @@ namespace Crell\HtmlModel;
 /**
  * Classes with this interface can contain content.
  *
- * @todo There's a fancy name in the spec for such elements; reame this interface
+ * @todo There's a fancy name in the spec for such elements; rename this interface
  * accordingly once we look it up.
  */
 interface ContentElementInterface
@@ -16,7 +16,7 @@ interface ContentElementInterface
      * @return string
      *   The body of the element.
      */
-    public function getContent();
+    public function getContent() : string;
 
     /**
      * Returns a copy of the element with the body content set.
@@ -25,5 +25,5 @@ interface ContentElementInterface
      *   The body of the element to set, that is, everything inside the tag.
      * @return self
      */
-    public function withContent($content);
+    public function withContent(string $content);
 }

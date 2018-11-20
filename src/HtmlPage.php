@@ -58,7 +58,7 @@ class HtmlPage implements HtmlPageInterface, EvolvableLinkProviderInterface
      * @param string $title
      *   The title of the page.
      */
-    public function __construct($content = '', $title = '')
+    public function __construct(string $content = '', string $title = '')
     {
         $this->title = $title;
         $this->content = $content;
@@ -89,7 +89,7 @@ class HtmlPage implements HtmlPageInterface, EvolvableLinkProviderInterface
     /**
      * {@inheritDoc}
      */
-    public function getBase()
+    public function getBase() : ?BaseElement
     {
         return $this->baseElement;
     }
@@ -97,7 +97,7 @@ class HtmlPage implements HtmlPageInterface, EvolvableLinkProviderInterface
     /**
      * {@inheritDoc}
      */
-    public function getHtmlAttributes()
+    public function getHtmlAttributes() : AttributeBag
     {
         return $this->htmlAttributes;
     }
@@ -113,7 +113,7 @@ class HtmlPage implements HtmlPageInterface, EvolvableLinkProviderInterface
     /**
      * {@inheritDoc}
      */
-    public function getBodyAttributes()
+    public function getBodyAttributes() : AttributeBag
     {
         return $this->bodyAttributes;
     }
@@ -129,7 +129,7 @@ class HtmlPage implements HtmlPageInterface, EvolvableLinkProviderInterface
     /**
      * {@inheritDoc}
      */
-    public function getTitle()
+    public function getTitle() : string
     {
         return $this->title;
     }
@@ -181,7 +181,7 @@ class HtmlPage implements HtmlPageInterface, EvolvableLinkProviderInterface
     /**
      * {@inheritDoc}
      */
-    public function getAllHeadElements()
+    public function getAllHeadElements() : array
     {
         return array_merge(
           [$this->getBase()],

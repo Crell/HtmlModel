@@ -15,7 +15,7 @@ interface StatusCodeContainerInterface
      * @return int
      *   The status code of this page.
      */
-    public function getStatusCode();
+    public function getStatusCode() : int;
 
     /**
      * Returns a copy of the page with the status code set.
@@ -25,5 +25,5 @@ interface StatusCodeContainerInterface
      *
      * @return static
      */
-    public function withStatusCode($code);
+    public function withStatusCode(int $code);
 }

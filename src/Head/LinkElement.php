@@ -10,7 +10,7 @@ class LinkElement extends HeadElement implements EvolvableLinkInterface
 
     protected $element = 'link';
 
-    public function __construct($rel, $href, array $attributes = [])
+    public function __construct(string $rel, string $href, array $attributes = [])
     {
         parent::__construct();
 

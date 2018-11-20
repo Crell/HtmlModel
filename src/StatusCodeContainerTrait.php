@@ -20,7 +20,7 @@ trait StatusCodeContainerTrait
      * @return int
      *   The status code of this page.
      */
-    public function getStatusCode()
+    public function getStatusCode() : int
     {
         return $this->statusCode;
     }
@@ -32,7 +32,7 @@ trait StatusCodeContainerTrait
      *   The status code to set.
      * @return static
      */
-    public function withStatusCode($code)
+    public function withStatusCode(int $code)
     {
         if ($this->statusCode == $code) {
             return $this;

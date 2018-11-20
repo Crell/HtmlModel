@@ -33,7 +33,7 @@ class HeadElement
      *
      * @return $this
      */
-    public function withNoScript($value = true)
+    public function withNoScript(bool $value = true) : self
     {
         $that = clone($this);
         $that->noScript = $value;
@@ -62,7 +62,7 @@ class HeadElement
      *   An array of the legal attribute keys for this element, and their default
      *   values. If left empty, all attributes will be legal.
      */
-    protected function setAttributes(array $attributes = [])
+    protected function setAttributes(array $attributes = []) : void
     {
         $this->attributes = new AttributeBag($attributes);
     }

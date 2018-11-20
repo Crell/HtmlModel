@@ -28,7 +28,7 @@ trait HeadElementContainerTrait
     /**
      * {@inheritDoc}
      */
-    public function getHeadElements()
+    public function getHeadElements() : array
     {
         return $this->headElements;
     }

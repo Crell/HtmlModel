@@ -20,7 +20,7 @@ trait ContentElementTrait
      * @return string
      *   The body of the Page, that is, everything inside the <body> tag.
      */
-    public function getContent()
+    public function getContent() : string
     {
         return $this->content;
     }
@@ -32,7 +32,7 @@ trait ContentElementTrait
      *   The body of the page to set, that is, everything inside the <body> tag.
      * @return self
      */
-    public function withContent($content)
+    public function withContent(string $content)
     {
         $that = clone($this);
         $that->content = $content;
@@ -48,7 +48,7 @@ trait ContentElementTrait
      * @param string $content
      *   The content to set.
      */
-    protected function setContent($content)
+    protected function setContent(string $content) : void
     {
         $this->content = $content;
     }

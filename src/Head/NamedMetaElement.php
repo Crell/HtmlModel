@@ -13,7 +13,7 @@ class NamedMetaElement extends MetaElement
      *   The value of the 'content' attribute of the element. Its significance
      *   varies depending on the $name.
      */
-    public function __construct($name, $contentAttribute)
+    public function __construct(string $name, string $contentAttribute)
     {
         parent::__construct([
             'name' => $name,

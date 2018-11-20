@@ -21,7 +21,7 @@ class KeywordsMetaElement extends NamedMetaElement
      * @return static
      *   A new KeywordsMetaElement instance with the provided keywords added.
      */
-    public function withAddedKeywords(array $keywords = [])
+    public function withAddedKeywords(array $keywords = []) : self
     {
         $existing = array_map('trim', explode(',', $this->getAttribute('content') ?: ''));
         $new = array_merge($existing, $keywords);

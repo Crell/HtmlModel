@@ -24,5 +24,5 @@ interface HeadElementContainerInterface
      *
      * @return HeadElement[]
      */
-    public function getHeadElements();
+    public function getHeadElements() : array;
 }

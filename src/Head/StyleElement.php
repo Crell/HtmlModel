@@ -17,7 +17,7 @@ class StyleElement extends HeadElement implements ContentElementInterface
      * @param string $content
      *   The content of the element. This is virtually always a CSS string.
      */
-    public function __construct($content)
+    public function __construct(string $content)
     {
         $this->setContent($content);
         $this->setAttributes([

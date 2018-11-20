@@ -20,7 +20,6 @@ trait ScriptContainerTrait
       'footer' => [],
     ];
 
-
     /**
      * Returns a copy of the page with the script added.
      *
@@ -50,7 +49,7 @@ trait ScriptContainerTrait
      * @return ScriptElement[]
      *   All JavaScript elements for the specified scope.
      */
-    public function getScripts($scope = 'header')
+    public function getScripts($scope = 'header') : array
     {
         return $this->scripts[$scope];
     }

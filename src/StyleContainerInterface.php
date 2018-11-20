@@ -22,7 +22,7 @@ interface StyleContainerInterface
      * @return StyleLinkElement[]
      *   The style links on this page.
      */
-    public function getStyleLinks();
+    public function getStyleLinks() : array;
 
     /**
      * Returns a copy of the page with the style added.
@@ -38,5 +38,5 @@ interface StyleContainerInterface
      *
      * @return StyleElement[]
      */
-    public function getInlineStyles();
+    public function getInlineStyles() : array;
 }

@@ -30,5 +30,5 @@ interface ScriptContainerInterface
      * @return ScriptElement[]
      *   All JavaScript elements for the specified scope.
      */
-    public function getScripts($scope = 'header');
+    public function getScripts($scope = 'header') : array;
 }

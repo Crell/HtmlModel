@@ -17,7 +17,7 @@ class ScriptElement extends HeadElement implements ContentElementInterface
      * @param string $src
      *   The URI of an external script.
      */
-    public function __construct($src = '')
+    public function __construct(string $src = '')
     {
         $this->setAttributes([
             'src' => $src,                      // The URI of an external script.

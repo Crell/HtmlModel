@@ -38,7 +38,7 @@ class AggregateMetadataTransferer implements MetadataTransfererInterface
      *
      * @return static
      */
-    public function addTransferer($class, MetadataTransfererInterface $transferer)
+    public function addTransferer(string $class, MetadataTransfererInterface $transferer)
     {
         $this->map[$class] = $transferer;
 
