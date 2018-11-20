@@ -25,7 +25,7 @@ class MetaElement extends HeadElement
     public function __construct(array $attributes = [])
     {
         if (!empty($attributes['http-equiv'])) {
-            assert('$this->validateHttpEquiv($attributes[\'http-equiv\'])');
+            assert($this->validateHttpEquiv($attributes['http-equiv']));
         }
 
         // @see https://developer.mozilla.org/en-US/docs/Web/HTML/Element/meta
@@ -49,7 +49,7 @@ class MetaElement extends HeadElement
     public function withAttribute($key, $value)
     {
         if ($key == 'http-equiv') {
-            assert('$this->validateHttpEquiv($value)');
+            assert($this->validateHttpEquiv($value));
         }
 
         return parent::withAttribute($key, $value);

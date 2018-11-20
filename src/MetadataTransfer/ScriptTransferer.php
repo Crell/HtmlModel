@@ -14,8 +14,8 @@ class ScriptTransferer implements MetadataTransfererInterface
      */
     public function transfer($src, $dest)
     {
-        assert('$src instanceof \Crell\HtmlModel\ScriptContainerInterface');
-        assert('$dest instanceof \Crell\HtmlModel\ScriptContainerInterface');
+        assert($src instanceof ScriptContainerInterface);
+        assert($dest instanceof ScriptContainerInterface);
 
         /** @var ScriptContainerInterface $src */
         /** @var ScriptContainerInterface $dest */

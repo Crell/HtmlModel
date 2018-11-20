@@ -34,7 +34,7 @@ trait ScriptContainerTrait
     public function withScript(ScriptElement $script, $scope = 'header')
     {
         // These are the only legal values.
-        assert('in_array($scope, [\'header\', \'footer\'])');
+        assert(in_array($scope, ['header', 'footer']));
 
         $that = clone($this);
         $that->scripts[$scope][] = $script;

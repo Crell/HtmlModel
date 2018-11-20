@@ -14,8 +14,8 @@ class StatusCodeTransferer implements MetadataTransfererInterface
      */
     public function transfer($src, $dest)
     {
-        assert('$src instanceof \Crell\HtmlModel\StatusCodeContainerInterface');
-        assert('$dest instanceof \Crell\HtmlModel\StatusCodeContainerInterface');
+        assert($src instanceof StatusCodeContainerInterface);
+        assert($dest instanceof StatusCodeContainerInterface);
 
         /** @var StatusCodeContainerInterface $src */
         /** @var StatusCodeContainerInterface $dest */

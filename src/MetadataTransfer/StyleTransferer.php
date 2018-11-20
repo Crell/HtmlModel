@@ -14,8 +14,8 @@ class StyleTransferer implements MetadataTransfererInterface
      */
     public function transfer($src, $dest)
     {
-        assert('$src instanceof \Crell\HtmlModel\StyleContainerInterface');
-        assert('$dest instanceof \Crell\HtmlModel\StyleContainerInterface');
+        assert($src instanceof StyleContainerInterface);
+        assert($dest instanceof StyleContainerInterface);
 
         /** @var StyleContainerInterface $src */
         /** @var StyleContainerInterface $dest */

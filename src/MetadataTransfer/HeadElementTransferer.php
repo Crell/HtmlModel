@@ -14,8 +14,8 @@ class HeadElementTransferer implements MetadataTransfererInterface
      */
     public function transfer($src, $dest)
     {
-        assert('$src instanceof \Crell\HtmlModel\HeadElementContainerInterface');
-        assert('$dest instanceof \Crell\HtmlModel\HeadElementContainerInterface');
+        assert($src instanceof HeadElementContainerInterface);
+        assert($dest instanceof HeadElementContainerInterface);
 
         /** @var HeadElementContainerInterface $src */
         /** @var HeadElementContainerInterface $dest */

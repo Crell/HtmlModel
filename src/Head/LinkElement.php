@@ -89,7 +89,7 @@ class LinkElement extends HeadElement implements EvolvableLinkInterface
     public function withAttribute($key, $value)
     {
         if ($key == 'crossorigin') {
-            assert('in_array($value, [\'anonymous\', \'use-credentials\'])');
+            assert(in_array($value, ['anonymous', 'use-credentials']));
         }
 
         return parent::withAttribute($key, $value);

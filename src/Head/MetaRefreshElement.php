@@ -13,10 +13,8 @@ class MetaRefreshElement extends MetaElement
      * @param $url
      *   The URL to which to redirect.
      */
-    public function __construct($seconds, $url)
+    public function __construct(int $seconds, $url)
     {
-        assert('is_int($seconds)');
-
         parent::__construct([
             'http-equiv' => 'refresh',
             'content' => "{$seconds};url={$url}",
