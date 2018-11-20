@@ -12,12 +12,12 @@ class AggregateMetadataTransferer implements MetadataTransfererInterface
     /**
      * Constructs a new AggregateMetadataTransferer
      *
-     * @param array $transferers
+     * @param iterable $transferers
      *   An associative array, where the keys are class/interface names
      *   and the values are transferer instances. This array will be mapped
      *   to the addTransferer() method.
      */
-    public function __construct(array $transferers = [])
+    public function __construct(iterable $transferers = [])
     {
         foreach ($transferers as $class => $transferer) {
             $this->addTransferer($class, $transferer);

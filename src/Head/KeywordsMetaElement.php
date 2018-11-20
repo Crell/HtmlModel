@@ -6,7 +6,7 @@ class KeywordsMetaElement extends NamedMetaElement
 {
     /**
      * @param array $keywords
-     *   An array of keywords to denote on this
+     *   An array of keywords to denote on this element.
      */
     public function __construct(array $keywords = [])
     {
