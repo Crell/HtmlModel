@@ -49,7 +49,7 @@ trait ScriptContainerTrait
      * @return ScriptElement[]
      *   All JavaScript elements for the specified scope.
      */
-    public function getScripts($scope = 'header') : array
+    public function getScripts($scope = 'header') : iterable
     {
         return $this->scripts[$scope];
     }

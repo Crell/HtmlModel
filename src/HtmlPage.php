@@ -181,7 +181,7 @@ class HtmlPage implements HtmlPageInterface, EvolvableLinkProviderInterface
     /**
      * {@inheritDoc}
      */
-    public function getAllHeadElements() : array
+    public function getAllHeadElements() : iterable
     {
         return array_merge(
           [$this->getBase()],

@@ -107,5 +107,5 @@ interface HtmlPageInterface extends ContentElementInterface, StatusCodeContainer
      *
      * @return HeadElement[]
      */
-    public function getAllHeadElements() : array;
+    public function getAllHeadElements() : iterable;
 }

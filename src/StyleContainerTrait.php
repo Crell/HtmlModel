@@ -41,7 +41,7 @@ trait StyleContainerTrait
      * @return StyleLinkElement[]
      *   The style links on this page.
      */
-    public function getStyleLinks() : array
+    public function getStyleLinks() : iterable
     {
         return $this->styleLinks;
     }
@@ -65,7 +65,7 @@ trait StyleContainerTrait
      *
      * @return StyleElement[]
      */
-    public function getInlineStyles() : array
+    public function getInlineStyles() : iterable
     {
         return $this->styles;
     }
