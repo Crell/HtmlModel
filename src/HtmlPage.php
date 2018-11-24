@@ -159,7 +159,7 @@ class HtmlPage implements HtmlPageInterface, EvolvableLinkProviderInterface
      *
      * This is just a helper to collapse HTML and BODY handling.
      *
-     * @param $collection
+     * @param string $collection
      *   Either htmlAttributes or bodyAttributes.
      * @param string $key
      *   The attribute to set.
@@ -168,7 +168,7 @@ class HtmlPage implements HtmlPageInterface, EvolvableLinkProviderInterface
      *
      * @return static
      */
-    private function withAttributeHelper($collection, $key, $value)
+    private function withAttributeHelper(string $collection, string $key, string $value)
     {
         $newAttributes = $this->$collection->withAttribute($key, $value);
 

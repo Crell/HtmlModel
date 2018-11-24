@@ -32,7 +32,7 @@ interface HtmlPageInterface extends ContentElementInterface, StatusCodeContainer
     /**
      * Returns the current base element of the page.
      *
-     * @return ?BaseElement
+     * @return BaseElement
      */
     public function getBase() : ?BaseElement;
 
